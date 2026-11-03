@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Agents — Propellus</title>
+<link rel="icon" type="image/png" href="propellus-logo.png" />
+<meta name="description" content="Prepare and manage your visa applications in one place. Reads documents, cross-checks, flags gaps, prepares the application." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ---- Agent page (scoped) ---- */
+  /* impact bullets */
+  .ag-impact { display:flex; flex-direction:column; gap:14px; margin-top:28px; max-width:760px; }
+  .ag-impact .row { display:flex; gap:14px; align-items:flex-start; font-size:16px; line-height:1.55; color:var(--text-secondary); }
+  .ag-impact .row b { color:var(--text-primary); font-weight:600; }
+  .ag-impact .mk { width:7px; height:7px; border-radius:50%; background:#dc2626; margin-top:9px; flex-shrink:0; }
+
+  /* interactive pain cards */
+  .pain { display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; margin-top:40px; }
+  .pain-card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:24px; cursor:pointer; transition:transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+  .pain-card:hover { transform:translateY(-4px); box-shadow:0 16px 34px rgba(15,42,68,0.03); border-color:var(--accent-border); }
+  .pain-ico { width:46px; height:46px; border-radius:12px; background:#fdeef1; color:#dc2626; display:grid; place-items:center; margin-bottom:16px; transition:background 200ms ease, color 200ms ease; }
+  .pain-card:hover .pain-ico { background:var(--accent-tint); color:var(--accent-deep); }
+  .pain-ico svg { width:22px; height:22px; }
+  .pain-card h4 { font-size:16.5px; font-weight:700; color:var(--text-primary); letter-spacing:-0.01em; }
+  .pain-card p { font-size:15px; line-height:1.55; color:var(--text-secondary); margin-top:10px; }
+  
+  .pain-hint { margin-top:18px; font-size:12px; color:var(--text-muted); }
+
+  /* product screens */
+  .prod { }
+  .prod-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-top:44px; }
+  .prod-shot { margin:0; background:#fff; border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-sm); transition:transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+  .prod-shot:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--accent-border); }
+  .prod-bar { display:flex; align-items:center; gap:6px; padding:10px 14px; background:var(--bg-deep); }
+  .prod-bar .d { width:9px; height:9px; border-radius:50%; background:var(--border-strong); }
+  .prod-bar .t { margin-left:8px; font-size:11px; color:var(--text-secondary); }
+  .prod-img { display:block; width:100%; height:220px; background:var(--bg-secondary); }
+  .prod-shot figcaption { padding:16px 18px 18px; border-top:1px solid var(--border); }
+  .prod-shot figcaption b { display:block; font-size:16px; font-weight:700; color:var(--text-primary); letter-spacing:-0.01em; }
+  .prod-shot figcaption span { display:block; font-size:13.5px; color:var(--text-secondary); margin-top:4px; line-height:1.5; }
+  @media (max-width: 900px) { .prod-grid { grid-template-columns:1fr; } }
+  .prod-video { margin:44px 0 0; background:#fff; border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-md); }
+  .prod-vid { display:block; width:100%; height:auto; background:var(--bg-secondary); }
+
+  /* fork: who are you */
+  .fork { background:#fff; }
+  .fork-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:44px; }
+  .fork-card { display:flex; flex-direction:column; background:#fff; border:1px solid var(--border); border-radius:16px; padding:30px 30px 26px; text-decoration:none; color:inherit; transition:transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+  .fork-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--accent-border); }
+  .fork-card .fk { font-size:12.5px; color:var(--accent-deep); }
+  .fork-card h3 { font-size:24px; font-weight:700; letter-spacing:-0.02em; color:var(--text-primary); margin-top:14px; }
+  .fork-card .lede { font-size:16px; color:var(--text-secondary); margin-top:8px; }
+  .fork-card ul { list-style:none; margin:20px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .fork-card li { position:relative; padding-left:20px; font-size:15.5px; color:var(--text-secondary); line-height:1.5; }
+  .fork-card li::before { content:""; position:absolute; left:0; top:10px; width:7px; height:7px; border-radius:50%; background:var(--accent); }
+  .fork-card .cta { margin-top:24px; padding-top:20px; border-top:1px solid var(--border); font-size:15.5px; font-weight:600; color:var(--text-primary); display:inline-flex; align-items:center; gap:6px; }
+  .fork-card .cta .arrow { transition:transform 160ms ease; }
+  .fork-card:hover .cta { color:var(--accent-deep); }
+  .fork-card:hover .cta .arrow { transform:translateX(4px); }
+  @media (max-width: 820px) { .fork-grid { grid-template-columns:1fr; } }
+
+  /* live proof line */
+  .live-proof { display:flex; width:fit-content; align-items:center; gap:9px; margin:14px 0 18px; font-size:13px; color:var(--accent-deep); background:rgba(0,194,203,0.10); border:1px solid var(--accent-border); border-radius:8px; padding:9px 14px; white-space:nowrap; }
+  .live-proof i { flex-shrink:0; width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 rgba(0,194,203,0.5); animation:lpPulse 2s infinite; }
+  .live-proof b { color:var(--text-primary); font-weight:600; }
+  @keyframes lpPulse { 0%,100%{ box-shadow:0 0 0 0 rgba(0,194,203,.5);} 70%{ box-shadow:0 0 0 6px rgba(0,194,203,0);} }
+
+  /* solution feature cards */
+  .sol { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-top:40px; }
+  .sol-card { background:#fff; border:1px solid var(--border); border-radius:16px; padding:28px; transition:transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+  .sol-card:hover { transform:translateY(-3px); box-shadow:0 16px 34px rgba(0,194,203,0.14); border-color:var(--accent-border); }
+  .sol-ico { width:48px; height:48px; border-radius:12px; background:var(--accent-tint); color:var(--accent-deep); display:grid; place-items:center; margin-bottom:18px; }
+  .sol-ico svg { width:23px; height:23px; }
+  .sol-card h3 { font-size:18px; font-weight:700; color:var(--text-primary); letter-spacing:-0.015em; }
+  .sol-card p { font-size:14.5px; line-height:1.6; color:var(--text-secondary); margin-top:8px; }
+
+  /* outcomes */
+  .ag-out { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-top:40px; }
+  .ag-out .o { display:flex; gap:13px; align-items:flex-start; background:var(--bg-secondary); border:1px solid var(--border); border-radius:14px; padding:22px; }
+  .ag-out .o .ck { width:26px; height:26px; border-radius:7px; background:var(--accent); color:var(--text-primary); display:grid; place-items:center; flex-shrink:0; }
+  .ag-out .o .ck svg { width:15px; height:15px; }
+  .ag-out .o span { font-size:15px; line-height:1.5; color:var(--text-primary); font-weight:500; }
+
+  /* revenue calculator (dark, interactive) */
+  .rev { background:var(--bg-deep); border-radius:20px; padding:44px; position:relative; overflow:hidden; }
+  .rev::before { content:""; position:absolute; top:-120px; right:-90px; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle, rgba(0,194,203,0.18), transparent 65%); }
+  .rev-grid { position:relative; z-index:2; display:grid; grid-template-columns:1fr 0.9fr; gap:48px; align-items:center; }
+  .rev-eye { font-size:13px; color:var(--accent-deep); }
+  .rev h2 { font-size:clamp(26px,3vw,34px); font-weight:700; letter-spacing:-0.025em; color:var(--text-primary); margin-top:12px; line-height:1.08; }
+  .rev p { font-size:15.5px; line-height:1.6; color:var(--text-secondary); margin-top:14px; }
+  .rev-ctrl { margin-top:28px; }
+  .rev-ctrl label { display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; color:var(--text-secondary); margin-bottom:12px; }
+  .rev-ctrl label b { color:var(--text-primary); font-size:15px; }
+  .rev-slider { -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:999px; background:#FFFFFF; outline:none; }
+  .rev-slider::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:22px; height:22px; border-radius:50%; background:var(--accent); cursor:pointer; box-shadow:0 0 0 4px rgba(0,194,203,0.25); }
+  .rev-slider::-moz-range-thumb { width:22px; height:22px; border:none; border-radius:50%; background:var(--accent); cursor:pointer; box-shadow:0 0 0 4px rgba(0,194,203,0.25); }
+  .rev-readout { background:#FFFFFF; border:1px solid var(--border); border-radius:16px; padding:30px; }
+  .rev-readout .rk { font-size:12px; color:var(--accent-deep); letter-spacing:0.04em; }
+  .rev-amt { font-size:clamp(34px,5vw,52px); font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; margin:10px 0 4px; line-height:1; }
+  .rev-amt .cur { color:var(--accent-deep); }
+  .rev-sub { font-size:13px; color:var(--text-secondary); }
+  .rev-band { margin-top:22px; padding-top:20px; border-top:1px solid var(--border); display:flex; justify-content:space-between; font-size:12.5px; color:var(--text-secondary); }
+  .rev-band b { color:var(--accent-deep); }
+  .rev-note { position:relative; z-index:2; margin-top:22px; font-size:11.5px; color:var(--text-muted); }
+
+  /* interactive workflow steps (scoped) */
+  .steps-run { position:relative; }
+  .steps-run .step { cursor:pointer; transition:transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease, background 200ms ease; overflow:hidden; }
+  .steps-run .step::after { content:""; position:absolute; left:0; top:0; height:3px; width:0; background:var(--accent); transition:width 600ms linear; }
+  .steps-run .step.done::after { width:100%; transition:none; }
+  .steps-run .step.on::after { width:100%; transition:width 1500ms linear; }
+  .steps-run .step.on { border-color:var(--accent-border); box-shadow:0 14px 32px rgba(0,194,203,0.16); transform:translateY(-3px); background:linear-gradient(180deg, rgba(0,194,203,0.05), #fff 60%); }
+  .steps-run .step .step-num { display:flex; align-items:center; gap:9px; }
+  .steps-run .step .step-num::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--border); transition:background 200ms ease, box-shadow 200ms ease; }
+  .steps-run .step.on .step-num::before { background:var(--accent); box-shadow:0 0 0 4px rgba(0,194,203,0.2); }
+  .steps-run .step.done .step-num::before { background:var(--accent); }
+
+  @media (max-width: 900px) {
+    .pain { grid-template-columns:1fr 1fr; }
+    .sol, .ag-out { grid-template-columns:1fr; }
+    .rev { padding:28px; }
+    .rev-grid { grid-template-columns:1fr; gap:28px; }
+  }
+  @media (max-width: 560px) { .pain { grid-template-columns:1fr; } }
+.prod-bar .d{display:none}.rev::before{display:none}</style>
+</head>
+<body class="hero-immersive">
+
+<div data-nav data-active="agents"></div>
+
+<!-- ============================================
+     HERO
+============================================ -->
+<section class="hero-im" data-screen-label="01 Agents Hero">
+  <div class="container">
+    <div class="hero-im-grid">
+      <div class="hero-im-inner fade-in">
+        <span class="label">FOR TRAVEL AGENTS</span>
+        <span class="live-proof"><i></i><span>Live with travel agents and an OTA partner</span></span>
+        <h1 class="h1">Prepare and manage your visa applications in <span class="accent">one place.</span></h1>
+        <p class="hero-im-sub">Stop juggling WhatsApp groups, Excel sheets, and endless follow-ups. Propellus runs everything from application intake to supplier fulfillment, live tracking, and billing — with AI doing the data entry.</p>
+        <div class="hero-cta">
+          <a class="btn btn-accent btn-cal" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book a demo</a>
+        </div>
+      </div>
+<div class="hm-product hero-pausable">
+        <img class="hm-product-img frame" src="assets/frames/ota-22s.jpg" alt="Propellus reading a traveller's documents" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     WHO ARE YOU (fork)
+============================================ -->
+<section class="section fork" data-screen-label="02 Fork">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">WHO ARE YOU</span>
+      <h2 class="h2">Two ways to run visas <span class="accent">on Propellus.</span></h2>
+      <p class="body-lg" style="margin-top:16px; max-width:680px;">A small agency and a large booking platform want different things. Pick the path that fits how you work.</p>
+    </div>
+    <div class="fork-grid">
+      <a class="fork-card" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">
+        <span class="fk">I RUN A TRAVEL AGENCY</span>
+        <h3>A workspace for your visa desk</h3>
+        <p class="lede">No developer, no integration.</p>
+        <ul>
+          <li>Orders, customers and documents in one place</li>
+          <li>AI reads passports — no more typing</li>
+          <li>Assign to suppliers, track every order</li>
+        </ul>
+        <span class="cta">Book a demo <span class="arrow">→</span></span>
+      </a>
+      <a class="fork-card" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">
+        <span class="fk">I RUN AN OTA OR BOOKING PLATFORM</span>
+        <h3>Visas inside your booking flow</h3>
+        <p class="lede">Your brand, our rails. Live with an OTA partner today.</p>
+        <ul>
+          <li>White-label storefront under your brand</li>
+          <li>API for OTAs and travel agents is available.</li>
+        </ul>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PROBLEM
+============================================ -->
+<section class="section" data-screen-label="04 Problem">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">VISA OPERATIONS AT SCALE</span>
+      <h2 class="h2">Visa operations are hard to manage at scale.</h2>
+      <p class="body-lg" style="margin-top:16px; max-width:680px;">Orders keep coming, customers keep following up, suppliers delay, and teams lose time tracking everything by hand.</p>
+    </div>
+    <div class="ag-impact">
+      <div class="row"><span class="mk"></span><span><b>Lost customers</b> from slow processing and weak communication</span></div>
+      <div class="row"><span class="mk"></span><span><b>High staff workload</b> and rising operational cost</span></div>
+    </div>
+    <div class="pain" id="painCards">
+      <div class="pain-card">
+        <div class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <h4>Too much manual work</h4>
+        <p>Collecting documents, checking requirements, updating forms, and chasing approvals — by hand, every time.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M21 3l-7 7"/><path d="M8 21H3v-5"/><path d="M3 21l7-7"/></svg></div>
+        <h4>Supplier dependency</h4>
+        <p>Delays happen outside your control — but your customer blames your agency.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <h4>No real tracking</h4>
+        <p>Status updates live in WhatsApp chats and scattered spreadsheets — never in one place.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h4>High rejection risk</h4>
+        <p>One missing document or wrong detail can cause a rejection or a costly delay.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRODUCT (real screens)
+============================================ -->
+<section class="section prod bg-secondary" data-screen-label="03 Product" style="background:#F2FCFC !important;">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">PRODUCT</span>
+      <h2 class="h2">See it <span class="accent">at work.</span></h2>
+      <p class="body-lg" style="margin-top:16px; max-width:680px;">A walkthrough of the Agent Portal, as your team will use it day to day.</p>
+    </div>
+    <figure class="prod-video" style="background:#FFFFFF;border:1px solid #CDEFF0;border-radius:16px;box-shadow:0 2px 8px rgba(11,23,35,.06);padding:12px;">
+      <div style="position:relative;width:100%;padding-top:48.0769%;border-radius:10px;overflow:hidden;background:#F2FCFC;"><iframe src="https://app.supademo.com/embed/cmt8byk6u095jqmvhvocsq1l2?embed_v=2&amp;utm_source=embed" loading="lazy" title="Propellus product demo" allow="clipboard-write" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================================
+     DOCUMENTS → DECISIONS (three-step strip)
+============================================ -->
+<section class="section" data-screen-label="03b Keep the Decisions">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="h2">Stop chasing documents. <span class="accent">Keep the decisions.</span></h2>
+      <p class="body-lg" style="margin-top:16px;max-width:720px;">Every document lands in one flow. Propellus AI reads, cross-checks, spots gaps and helps you fix them, then gets the visa form ready. Propellus prepares the application on the official visa site; your team reviews and submits.</p>
+      <a class="btn" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener" style="margin-top:24px;background:#00777D;color:#FFFFFF;border-color:transparent;">Book a demo</a>
+    </div>
+    <div class="kd-strip" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:40px;">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px;"><figcaption style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:#0B1723;"><b style="width:26px;height:26px;border-radius:50%;background:#00C2CB;color:#0B1723;display:grid;place-items:center;font-size:12.5px;">1</b></figcaption><div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 18px 40px rgba(15,42,68,.10);aspect-ratio:16/9;background:#fff;"><img src="assets/frames/agency-24s.jpg" alt="Every document lands in one flow" style="width:100%;height:100%;object-fit:cover;display:block;"></div></figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px;"><figcaption style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:#0B1723;"><b style="width:26px;height:26px;border-radius:50%;background:#00C2CB;color:#0B1723;display:grid;place-items:center;font-size:12.5px;">2</b></figcaption><div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 18px 40px rgba(15,42,68,.10);aspect-ratio:16/9;background:#fff;"><img src="assets/frames/agency-33s.jpg" alt="Potential gaps flagged with a suggested fix" style="width:100%;height:100%;object-fit:cover;display:block;"></div></figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:10px;"><figcaption style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:#0B1723;"><b style="width:26px;height:26px;border-radius:50%;background:#00C2CB;color:#0B1723;display:grid;place-items:center;font-size:12.5px;">3</b></figcaption><div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 18px 40px rgba(15,42,68,.10);aspect-ratio:16/9;background:#fff;"><img src="assets/frames/agency-51s.jpg" alt="Application ready for your team to submit" style="width:100%;height:100%;object-fit:cover;display:block;"></div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SOLUTION
+============================================ -->
+<section class="section bg-secondary" data-screen-label="05 Solution">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">ONE TRACKABLE SYSTEM</span>
+      <h2 class="h2">Propellus turns visa chaos into a smooth, trackable system.</h2>
+      <p class="body-lg" style="margin-top:16px; max-width:720px;">Instead of WhatsApp, Excel, and repeated follow-ups, you run everything in one platform — from application intake to supplier fulfillment, real-time tracking, and billing.</p>
+    </div>
+    <div class="sol">
+      <div class="sol-card">
+        <div class="sol-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Guided visa workflow</h3>
+        <p>Ensures the correct documents and requirements every time — no guesswork for your team.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Live status tracking</h3>
+        <p>Every order's status in one view.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><circle cx="8" cy="15" r="1.5"/><path d="M12 15h5"/></svg></div>
+        <h3>AI-powered document extraction</h3>
+        <p>Reads passports and documents automatically — reduces manual typing and mistakes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     WORKFLOW (interactive)
+============================================ -->
+<section class="section bg-secondary" id="how" data-screen-label="04 Workflow" hidden style="display:none;">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">HOW IT WORKS</span>
+      <h2 class="h2">Four steps. Then done.</h2>
+    </div>
+    <div class="steps steps-run" id="flowSteps">
+      <div class="step" data-i="0">
+        <div class="step-num">01 / Intake</div>
+        <div class="step-body">Customer or agent uploads the passport. Propellus OCR extracts all traveler identity data automatically.</div>
+      </div>
+      <div class="step" data-i="1">
+        <div class="step-num">02 / AI validates</div>
+        <div class="step-body">AI checks the data against destination visa requirements and catches errors before submission.</div>
+      </div>
+      <div class="step" data-i="2">
+        <div class="step-num">03 / Form auto-filled</div>
+        <div class="step-body">The application is populated instantly from extracted data. Your team reviews and confirms. No typing.</div>
+      </div>
+      <div class="step" data-i="3">
+        <div class="step-num">04 / Your team reviews and submits</div>
+        <div class="step-body">Your team checks the prepared application and submits it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     OUTCOMES
+============================================ -->
+<section class="section bg-secondary" data-screen-label="07 Outcomes">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">OUTCOME FOR AGENTS</span>
+      <h2 class="h2">What changes for your agency.</h2>
+    </div>
+    <div class="ag-out">
+      <div class="o"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Reads documents, cross-checks, flags gaps, prepares the application.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="pl-band" data-screen-label="Partner Logos" style="padding:64px 0;background:#F5F8FA;border-top:1px solid #E3E8ED;border-bottom:1px solid #E3E8ED;">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:28px;">
+    <h2 style="margin:0;font-size:18px;font-weight:600;color:#0B1723;text-align:center;letter-spacing:0;">Working with agencies and OTAs</h2>
+    <div class="pl-row">
+      <div class="pl-box"><img src="assets/partner-logos/gozayaan.svg" alt="GoZayaan"/></div>
+      <div class="pl-box"><img class="pl-aeg" src="assets/partner-logos/aeg.png" alt="AEG Travel"/></div>
+      <div class="pl-box"><img src="assets/partner-logos/explorer360.png" alt="Explorer 360"/></div>
+      <div class="pl-box"><img src="assets/partner-logos/tourease.png" alt="TourEase"/></div>
+      <div class="pl-box"><img src="assets/partner-logos/gb-limousine.png" alt="GB Limousine"/></div>
+    </div>
+  </div>
+</section>
+<style>.pl-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;width:100%}.pl-box{height:96px;border-radius:12px;background:#FFFFFF !important;border:1px solid #CDEFF0 !important;display:flex;align-items:center;justify-content:center;padding:8px;min-width:0}.pl-box img{display:block;height:44px;width:auto;max-width:100%;object-fit:contain}.pl-box img.pl-aeg{height:60px}.pl-box img[src*="explorer360"]{height:72px}.pl-box img[src*="tourease"]{height:52px}@media(max-width:900px){.pl-row{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:560px){.pl-row{grid-template-columns:repeat(2,minmax(0,1fr))}.pl-box{height:84px}.pl-box img{height:38px}.pl-box img.pl-aeg{height:52px}.pl-box img[src*="explorer360"]{height:64px}.pl-box img[src*="tourease"]{height:46px}}</style>
+
+<!-- ============================================
+     FINAL CTA
+============================================ -->
+<section class="final-cta" data-screen-label="07 CTA">
+  <div class="container">
+    <h2 class="h2">See Propellus for your agency.</h2>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a>
+    </div>
+  </div>
+</section>
+
+<div data-footer></div>
+
+<script src="image-slot.js"></script>
+<script>
+/* shared tweak state (driven by the Tweaks panel) */
+window.__tw = { flow: 1700, fee: 60, share: 0.20 };
+
+/* interactive pain cards (tap to toggle on touch) */
+(function () {
+  var wrap = document.getElementById('painCards');
+  if (!wrap) return;
+  wrap.querySelectorAll('.pain-card').forEach(function (c) {
+    c.addEventListener('click', function () { c.classList.toggle('open'); });
+  });
+})();
+/* interactive workflow stepper */
+(function () {
+  var wrap = document.getElementById('flowSteps');
+  if (!wrap) return;
+  var steps = Array.prototype.slice.call(wrap.querySelectorAll('.step'));
+  var n = steps.length, cur = -1, timer = null, paused = false;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function render() { steps.forEach(function (s, k) { s.classList.toggle('on', k === cur); s.classList.toggle('done', k < cur); }); }
+  function next() { var nx = (cur + 1) % n; if (nx === 0) { steps.forEach(function (s) { s.classList.remove('on','done'); }); void wrap.offsetWidth; } cur = nx; render(); }
+  function start() { if (reduce || paused) return; stop(); next(); timer = setInterval(next, window.__tw.flow); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  steps.forEach(function (s, i) { s.addEventListener('click', function () { paused = true; stop(); cur = i; steps.forEach(function (x, j) { x.classList.toggle('on', j === i); x.classList.toggle('done', j < i); }); }); });
+  wrap.addEventListener('mouseenter', function () { paused = true; stop(); });
+  wrap.addEventListener('mouseleave', function () { paused = false; start(); });
+  window.__flowRestart = function () { if (!paused && !reduce) start(); };
+  var seen = false;
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !seen) { seen = true; if (reduce) { steps.forEach(function (s) { s.classList.add('done'); }); } else start(); } }); }, { threshold: 0.35 });
+  io.observe(wrap);
+})();
+</script>
+
+<script src="chrome.js" defer></script>
+</body>
+</html>
