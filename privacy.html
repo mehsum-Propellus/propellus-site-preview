@@ -28,6 +28,7 @@
   .legal table { width:100%; border-collapse:collapse; font-size:15px; line-height:1.55; }
   .legal th { text-align:left; font-weight:600; color:var(--text-primary); background:#F2FCFC; padding:12px 16px; border-bottom:1px solid #CDEFF0; }
   .legal td { color:var(--text-secondary); padding:12px 16px; border-bottom:1px solid #CDEFF0; vertical-align:top; }
+  @media(max-width:640px){.legal table thead{display:none}.legal table,.legal tbody,.legal tr,.legal td{display:block;width:100% !important}.legal tr{border-bottom:1px solid #CDEFF0;padding:12px 16px}.legal tr:last-child{border-bottom:0}.legal td{padding:2px 0;border:0}.legal td::before{content:attr(data-label);display:block;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#00767D}}
   .legal tr:last-child td { border-bottom:0; } .legal td:first-child { color:var(--text-primary); font-weight:500; width:34%; }
   .legal a { color:var(--accent-deep); font-weight:500; }
   .legal .draft-note {
@@ -40,64 +41,65 @@
     margin-bottom:36px;
     line-height:1.6;
   }
+
+.legal-head{padding:120px 0 32px;border-bottom:1px solid #CDEFF0;background:#FFFFFF}
+.legal-col{max-width:760px;margin:0 auto}
+.legal-head .h1{margin:0}
+.legal-head p{margin:8px 0 0;font-size:15px}
+.legal-body{padding-top:48px;background:#FFFFFF}
+.legal{max-width:760px;margin:0 auto}
+.legal a{text-decoration:underline;text-underline-offset:2px}
+.legal-toc{margin:0 0 40px;padding:20px 24px;border:1px solid #CDEFF0;border-radius:16px;background:#FFFFFF}
+.legal-toc h2{font-size:12px !important;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#00767D !important;margin:0 0 12px !important}
+.legal-toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px;font-size:15px;line-height:1.7}
+.legal-toc a{color:#00767D}
+.legal h2{scroll-margin-top:96px}
+@media(max-width:640px){.legal-toc ol{columns:1}.legal-head{padding:104px 0 24px}}
 </style>
 </head>
 <body class="hero-immersive">
 
 <div data-nav data-active=""></div>
 
-<section class="hero-im compact" style="min-height:48vh;">
-  <image-slot class="hero-im-bg" id="hero-privacy" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1496449903678-68ddcb189a24?w=1800&q=80&auto=format&fit=crop" placeholder="Drop an image"></image-slot>
-  <div class="hero-im-scrim"></div>
-  <div class="container">
-    <div class="hero-im-grid solo">
-      <div class="hero-im-inner fade-in">
-        <h1 class="h1" style="font-size:clamp(32px, 4.5vw, 46px);">Privacy Policy</h1>
-        <p class="hero-im-sub">Last updated: 3 November 2026</p>
-      </div>
-    </div>
-  </div>
-</section>
+<header class="legal-head" data-screen-label="01 Privacy Policy"><div class="container"><div class="legal-col"><h1 class="h1">Privacy Policy</h1><p>Last updated: 3 November 2026</p></div></div></header>
 
-<section class="section" style="padding-top:16px;">
+<section class="section legal-body" data-screen-label="02 Document">
   <div class="container">
     <div class="legal">
-<h2>Who we are</h2>
+<nav class="legal-toc" aria-label="Contents"><h2>Contents</h2><ol><li><a href="#who-we-are">Who we are</a></li><li><a href="#whose-data-is-it">Whose data is it</a></li><li><a href="#what-we-collect">What we collect</a></li><li><a href="#why-we-use-it">Why we use it</a></li><li><a href="#consent">Consent</a></li><li><a href="#who-we-share-it-with">Who we share it with</a></li><li><a href="#transfers-outside-singapore">Transfers outside Singapore</a></li><li><a href="#how-long-we-keep-it">How long we keep it</a></li><li><a href="#how-we-protect-it">How we protect it</a></li><li><a href="#data-breaches">Data breaches</a></li><li><a href="#your-rights">Your rights</a></li><li><a href="#data-protection-officer">Data Protection Officer</a></li><li><a href="#changes">Changes</a></li><li><a href="#cookies">Cookies</a></li></ol></nav>
+<h2 id="who-we-are">Who we are</h2>
 <p>Propellus Pte. Ltd. (UEN 202307570R), 1 North Bridge Road, #03-23, High Street Centre, Singapore 179094 ("Propellus", "we", "us"). We provide visa processing software to travel agencies, online travel agencies and other business customers ("agencies").</p>
-<h2>Whose data is it</h2>
+<h2 id="whose-data-is-it">Whose data is it</h2>
 <ul><li><strong>Our own data.</strong> We are responsible for data about website visitors, people who fill in our forms, our customers' account users, and business contacts.</li><li><strong>Applicant data.</strong> When an agency uses Propellus to process a traveller's visa application, that data belongs to the agency. We process it only on the agency's instructions and under our agreement with them. If you are a traveller, please contact your agency first, and we will help them deal with your request.</li></ul>
-<h2>What we collect</h2>
+<h2 id="what-we-collect">What we collect</h2>
 <ul><li>Contact details you give us, such as your name, work email, company and phone number.</li><li>Account and usage data for people who use our platform.</li><li>Website usage data collected through cookies (see "Cookies" below).</li><li>For agencies, applicant data: passport and travel document details and scans, identity and contact details, supporting documents, and application status.</li></ul>
-<h2>Why we use it</h2>
+<h2 id="why-we-use-it">Why we use it</h2>
 <ul><li>To provide, run and support our services.</li><li>To process visa applications for agencies.</li><li>To answer enquiries and demo requests.</li><li>To send service updates and, if you have agreed to them, product news.</li><li>To improve our website and services, and to keep them secure.</li><li>To meet our legal obligations.</li></ul>
 <p>We do not sell personal data, and we do not use applicant data for advertising.</p>
-<h2>Consent</h2>
+<h2 id="consent">Consent</h2>
 <p>By giving us your data, you agree that we can use it as described here. You can withdraw your consent at any time by emailing <a href="mailto:frank@propellus.co">frank@propellus.co</a>. If you do, we will tell you what it means for the services you receive.</p>
-<h2>Who we share it with</h2>
-<ul><li>The government authority or official visa channel handling the application.</li><li>The agency acting for the traveller.</li><li>Service providers who work for us under contract, including cloud hosting providers, Google (Google Analytics 4) and HubSpot (forms and customer records).</li></ul>
-<h2>Transfers outside Singapore</h2>
+<h2 id="who-we-share-it-with">Who we share it with</h2>
+<ul><li>The visa authority or official visa channel handling the application.</li><li>The agency acting for the traveller.</li><li>Service providers who work for us under contract, including cloud hosting providers, Google (Google Analytics 4) and HubSpot (forms and customer records).</li></ul>
+<h2 id="transfers-outside-singapore">Transfers outside Singapore</h2>
 <p>When data leaves Singapore, we use contracts and other safeguards to make sure it is protected to a standard comparable to Singapore law.</p>
-<h2>How long we keep it</h2>
-<div class="legal-table"><table><thead><tr><th>Data</th><th>How long</th></tr></thead><tbody><tr><td>Applicant data</td><td>Deleted 90 days after the application is completed, unless the agency's agreement with us says otherwise</td></tr><tr><td>Account and contract data</td><td>For as long as the account is open, plus 5 years for Singapore tax and record-keeping</td></tr><tr><td>Marketing leads and enquiries</td><td>2 years after our last contact with you</td></tr><tr><td>Website analytics (GA4)</td><td>14 months</td></tr></tbody></table></div>
-<h2>How we protect it</h2>
+<h2 id="how-long-we-keep-it">How long we keep it</h2>
+<div class="legal-table"><table><thead><tr><th>Data</th><th>How long</th></tr></thead><tbody><tr><td data-label="Data">Applicant data</td><td data-label="How long">Deleted 90 days after the application is completed, unless the agency's agreement with us says otherwise</td></tr><tr><td data-label="Data">Account and contract data</td><td data-label="How long">For as long as the account is open, plus 5 years for Singapore tax and record-keeping</td></tr><tr><td data-label="Data">Marketing leads and enquiries</td><td data-label="How long">2 years after our last contact with you</td></tr><tr><td data-label="Data">Website analytics (GA4)</td><td data-label="How long">14 months</td></tr></tbody></table></div>
+<h2 id="how-we-protect-it">How we protect it</h2>
 <p>We encrypt data in transit, limit access to staff who need it, and log access to sensitive data. Our <a href="security.html">Security</a> page has more detail.</p>
-<h2>Data breaches</h2>
+<h2 id="data-breaches">Data breaches</h2>
 <p>If a breach is likely to cause significant harm, we will tell the Personal Data Protection Commission (PDPC) and the affected customers and individuals, as the law requires, within 3 days of confirming it.</p>
-<h2>Your rights</h2>
+<h2 id="your-rights">Your rights</h2>
 <p>You can ask to see the personal data we hold about you and to have it corrected. We will reply within 30 days. Depending on where you live, you may also be able to ask us to delete your data or to stop using it.</p>
-<h2>Data Protection Officer</h2>
+<h2 id="data-protection-officer">Data Protection Officer</h2>
 <p>Francisco Humarang (CTO), <a href="mailto:frank@propellus.co">frank@propellus.co</a>. If you are not happy with our reply, you can contact the PDPC at <a href="https://www.pdpc.gov.sg" target="_blank" rel="noopener">www.pdpc.gov.sg</a>.</p>
-<h2>Changes</h2>
+<h2 id="changes">Changes</h2>
 <p>We may update this policy. The date at the top shows when it last changed. This policy is governed by Singapore law.</p>
 <hr>
-<h2>Cookies</h2>
+<h2 id="cookies">Cookies</h2>
 <p>We use cookies that are needed for the website to work. If you agree, we also use:</p>
 <ul><li><strong>Google Analytics 4</strong> (cookies such as <code>_ga</code> and <code>_ga_*</code>) to see how visitors use the site.</li><li><strong>HubSpot</strong> (cookies such as <code>__hstc</code>, <code>hubspotutk</code>, <code>__hssc</code> and <code>__hssrc</code>) to run our forms and recognise returning visitors.</li></ul>
 <p>You can change your choice at any time with "Cookie settings" in the footer or in your browser settings.</p>
-<h3>Cookie banner text</h3>
-<blockquote><p>We use cookies to run this site and, with your OK, to see how it's used (Google Analytics) and to manage enquiries (HubSpot). <a href="privacy.html">Privacy Policy</a></p><p><strong>[Accept all]  [Reject non-essential]  [Settings]</strong></p></blockquote>
-<h3>Form consent line (under each form)</h3>
-<blockquote><p>By submitting, you agree that Propellus may use your details to reply to you, as described in our <a href="privacy.html">Privacy Policy</a>. ☐ Send me occasional product updates (optional).</p></blockquote>
+
     </div>
   </div>
 </section>

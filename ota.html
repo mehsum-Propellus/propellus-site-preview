@@ -2,65 +2,163 @@
 <html lang="en">
 <head>
 <meta name="robots" content="noindex, nofollow">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>For OTAs — Propellus</title>
 <link rel="icon" type="image/png" href="propellus-logo.png" />
-<meta name="description" content="Add visa application preparation to your booking flow, connected by API. Propellus AI does the preparing. Your team does the deciding.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="fp-variants.css">
+<meta name="description" content="Add visa application preparation to your booking flow, connected by API. Propellus AI does the preparing. Your team does the deciding." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
 <style>
-:root{--bg:#FFFFFF;--bg-alt:#F5F8FA;--surface:#FFFFFF;--surface-2:#F1F5F8;--ink:#0B1723;--body:#3E4F60;--line:#E3E8ED;--line-strong:#C8D1DA;--accent:#00C2CB;--accent-ink:#00777D;--accent-soft:#E2F7F8;--primary:#00777D;--primary-hover:#00666B;--on-primary:#FFFFFF;--secondary:#0F2A44;--secondary-hover:#1B3B5C;--on-secondary:#FFFFFF;--btn-radius:999px;--glow:0 8px 24px rgba(0,119,125,.22);--feature-bg:#F0FAFB;--feature-line:#BFE9EC;--hero-bg:radial-gradient(60% 80% at 0% 0%,#E3F8F9 0%,transparent 60%),radial-gradient(50% 70% at 100% 0%,#EAF4FE 0%,transparent 60%),#FFFFFF;--shadow-lg:0 18px 40px rgba(15,42,68,.10),0 4px 10px rgba(15,42,68,.05);--head-weight:600;--head-track:-0.02em}
-.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:center}
-.split.rev{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
-.split.rev .txt{order:2}
-.txt{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
-.txt p{font-size:17px;max-width:62ch}
-.frame{margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:#fff;aspect-ratio:16/9}
-.frame img{width:100%;height:100%;object-fit:cover}
-.cap{display:flex;flex-direction:column;gap:10px;margin:0}
-.cap figcaption{font-size:15px;font-weight:600;color:var(--ink)}
-.cap.with figcaption{color:var(--accent-ink)}
-.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:40px}
-.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:40px;counter-reset:s}
-.four .cap figcaption{display:flex;align-items:center;gap:10px;color:var(--ink);letter-spacing:.04em;text-transform:none;font-size:15px}
-.four .cap figcaption b{width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--ink);display:grid;place-items:center;font-size:12.5px}
-.four .frame{border-radius:14px}
-.note{font-size:14px;color:var(--body);padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);max-width:540px}
-.centered{display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px}
-.centered p{font-size:17px;max-width:620px}
-.hero .txt p{font-size:19px}
-@media(max-width:960px){.split,.split.rev{grid-template-columns:minmax(0,1fr);gap:36px}.split.rev .txt{order:0}.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.pair,.four{grid-template-columns:minmax(0,1fr)}}
-.foot-top{grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr))}@media(max-width:860px){.foot-top{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.sec{padding:72px 0}.foot li a,.foot-brand p,.foot-bot{font-size:15px}
+.ota-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.ota-split.rev>.ota-txt{order:2}
+.ota-txt{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.ota-txt .h2{margin:0}
+.ota-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:40px;justify-items:center}
+.ota-pair .shot{width:100%;max-width:340px}
+.shot-tag{display:inline-block;align-self:flex-start;font-size:14px;font-weight:600;color:#0B1723;background:#F2FCFC;border:1px solid #CDEFF0;border-radius:999px;padding:6px 14px}
+.shot-tag.with{color:#00767D;border-color:#00767D;background:#FFFFFF}
+.pt{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:48px;align-items:start;margin-top:40px}
+.pt-tabs{display:flex;flex-direction:column;gap:10px}
+.pt-tab{display:flex;align-items:center;gap:14px;min-height:56px;text-align:left;font:inherit;font-size:17px;font-weight:600;color:#0B1723;background:#FFFFFF;border:1px solid #CDEFF0;border-radius:16px;padding:12px 18px;cursor:pointer}
+.pt-tab b{width:28px;height:28px;border-radius:50%;background:#F2FCFC;color:#00767D;display:grid;place-items:center;font-size:13px;flex-shrink:0}
+.pt-tab[aria-selected="true"]{border-color:#00767D}
+.pt-tab[aria-selected="true"] b{background:#00767D;color:#FFFFFF}
+.pt-panel .shot{width:420px;max-width:100%}
+.ota-head{max-width:760px}
+.ota-head .body-lg{margin-top:16px}
+@media(max-width:900px){.ota-split,.ota-split.rev{grid-template-columns:minmax(0,1fr);gap:36px}.ota-split.rev>.ota-txt{order:0}.ota-split .shot{justify-self:start}.pt{grid-template-columns:minmax(0,1fr);gap:24px}.pt-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.ota-pair{grid-template-columns:minmax(0,1fr)}.pt-tab{font-size:15px;padding:10px 12px}.pt-panel .shot{width:300px}}
 </style>
-<style>/* v3 light spec */:root{--bg:#FFFFFF;--bg-alt:#FFFFFF;--surface:#F2FCFC;--surface-2:#F2FCFC;--ink:#0B1723;--body:#5A6670;--line:#CDEFF0;--line-strong:#CDEFF0;--accent-ink:#00767D;--primary:#00C2CB;--primary-hover:#00C2CB;--on-primary:#0B1723;--accent-soft:#F2FCFC;--feature-bg:#F2FCFC;--feature-line:#CDEFF0;--hero-bg:#FFFFFF;--glow:none;--shadow-lg:none}.frame{box-shadow:none}</style>
-<style>/* v3: phone mock-up caption bars */.cap figcaption,.cap.with figcaption,.four .cap figcaption{background:#F2FCFC !important;color:#0B1723 !important;padding:10px 14px !important;border-radius:10px !important;border:1px solid #CDEFF0 !important;text-transform:none !important;letter-spacing:0 !important;font-size:15px !important}.four .cap figcaption b{background:#00C2CB;color:#0B1723}</style>
 </head>
-<body>
-<nav class="nav"><div class="wrap nav-in"><a class="logo" href="index.html"><img src="propellus-logo.png" alt=""><span>Propellus</span></a><div class="nav-links"><a href="agents.html">For travel agents</a><a class="on" href="ota.html">For OTAs</a><a href="how-it-works.html">How it works</a><a href="security.html">Security</a><a href="contact.html">Contact</a></div><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div></nav>
-<section class="hero" data-screen-label="01 Hero"><div class="wrap split"><div class="txt"><span class="chip">For OTAs</span><h1>Visa application preparation for travel agents and <span class="accent">OTAs.</span></h1><p>Propellus prepares the application. Your team checks and submits.</p><p>Add visa application preparation to your booking flow, connected by API. Propellus AI does the preparing. Your team does the deciding.</p><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div><figure class="frame"><img src="assets/frames/ota-12s.jpg" alt="Phone showing the visa step inside an OTA booking flow"></figure></div></section>
-<section class="sec" data-screen-label="02 The Gap"><div class="wrap split rev"><div class="txt"><span class="chip">The Gap</span><h2>Your customers book the flight and hotel. The visa is <span class="accent">left to them.</span></h2><p>Visa requirements are fragmented, so most booking flows stop at the ticket. Propellus adds the visa step to the trip your customer is already booking.</p><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div><figure class="frame"><img src="assets/frames/ota-49s.jpg" alt="Propellus AI does the preparing."></figure></div></section>
-<section class="sec alt" data-screen-label="03 Guided Steps"><div class="wrap split"><div class="txt"><span class="chip">For The Traveller</span><h2>Your traveller is guided, <span class="accent">step by step.</span></h2><p>Inside your app, the traveller sees exactly what to bring: passport, photo, bank statements, bookings. Each document has its own step and a clear status, so nothing is missed on the way in.</p><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div><figure class="frame"><img src="assets/frames/ota-18s.jpg" alt="Upload checklist with a status for each document"></figure></div></section>
-<section class="sec" data-screen-label="04 Back-and-forth"><div class="wrap"><div class="head"><span class="chip">Back-and-forth Help</span><h2>Questions and missing documents, <span class="accent">handled in the flow.</span></h2><p>No more back-and-forth for one application. When a passport is expired, a photo is too small or a statement is missing, the traveller gets a clear request and a suggested fix in chat, and can reply or re-upload right there.</p><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div><div class="pair"><figure class="cap"><figcaption>Requests over chat</figcaption><div class="frame"><img src="assets/frames/agency-10s.jpg" alt="Chat thread collecting documents over several days"></div></figure><figure class="cap with"><figcaption>Request and suggested fix in the flow</figcaption><div class="frame"><img src="assets/frames/ota-29s.jpg" alt="Suggested fix card listing what the traveller needs to send"></div></figure></div></div></section>
-<section class="sec alt" data-screen-label="05 Prepare"><div class="wrap"><div class="head"><span class="chip">How It Prepares</span><h2>Read. Cross-check. Flag gaps. <span class="accent">Prepare.</span></h2><p>Propellus AI reads every document, cross-checks and validates the details, highlights potential gaps and helps fix them. Then it prepares the visa form and sorts, resizes and attaches every document.</p><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div><div class="four"><figure class="cap"><figcaption><b>1</b>Reads</figcaption><div class="frame"><img src="assets/frames/ota-22s.jpg" alt="AI reading documents"></div></figure><figure class="cap"><figcaption><b>2</b>Cross-checks</figcaption><div class="frame"><img src="assets/frames/ota-26s.jpg" alt="Cross-check of every document"></div></figure><figure class="cap"><figcaption><b>3</b>Flags gaps</figcaption><div class="frame"><img src="assets/frames/ota-29s.jpg" alt="Potential gaps with a suggested fix"></div></figure><figure class="cap"><figcaption><b>4</b>Prepares</figcaption><div class="frame"><img src="assets/frames/ota-35s.jpg" alt="Visa form prepared with documents attached"></div></figure></div></div></section>
-<section class="pl-band" data-screen-label="Partner Logos" style="padding:64px 0;background:#F5F8FA;border-top:1px solid #E3E8ED;border-bottom:1px solid #E3E8ED;">
-  <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:28px;">
-    <h2 style="margin:0;font-size:18px;font-weight:600;color:#0B1723;text-align:center;letter-spacing:0;">Working with agencies and OTAs</h2>
-    <div class="pl-row">
-      <div class="pl-box"><img src="assets/partner-logos/gozayaan.svg" alt="GoZayaan"/></div>
-      <div class="pl-box"><img class="pl-aeg" src="assets/partner-logos/aeg.png" alt="AEG Travel"/></div>
-      <div class="pl-box"><img src="assets/partner-logos/explorer360.png" alt="Explorer 360"/></div>
-      <div class="pl-box"><img src="assets/partner-logos/tourease.png" alt="TourEase"/></div>
-      <div class="pl-box"><img src="assets/partner-logos/gb-limousine.png" alt="GB Limousine"/></div>
+<body class="hero-immersive">
+
+<div data-nav data-active="ota"></div>
+
+<section class="hero-im" data-screen-label="01 OTA Hero">
+  <div class="container">
+    <div class="hero-im-grid">
+      <div class="hero-im-inner">
+        <span class="label">FOR OTAS</span>
+        <h1 class="h1">Add visas to your <span class="accent">booking flow.</span></h1>
+        <p class="hero-im-sub">Add visa application preparation to your booking flow, connected by API. Propellus AI does the preparing. Your team does the deciding.</p>
+        <div class="hero-cta"><a class="btn btn-accent" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div>
+      </div>
+      <figure class="shot"><picture><source srcset="assets/shots/shot-ota-prepares-v.webp" type="image/webp"><img src="assets/shots/shot-ota-prepares-v.jpg" width="390" height="500" alt="Visa form prepared inside a booking app, with documents sorted by type"></picture><figcaption>Inside your app, Propellus prepares the visa form and attaches each document for your team to check.</figcaption></figure>
     </div>
   </div>
 </section>
-<style>.pl-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;width:100%}.pl-box{height:96px;border-radius:12px;background:#FFFFFF !important;border:1px solid #CDEFF0 !important;display:flex;align-items:center;justify-content:center;padding:8px;min-width:0}.pl-box img{display:block;height:44px;width:auto;max-width:100%;object-fit:contain}.pl-box img.pl-aeg{height:60px}.pl-box img[src*="explorer360"]{height:72px}.pl-box img[src*="tourease"]{height:52px}@media(max-width:900px){.pl-row{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:560px){.pl-row{grid-template-columns:repeat(2,minmax(0,1fr))}.pl-box{height:84px}.pl-box img{height:38px}.pl-box img.pl-aeg{height:52px}.pl-box img[src*="explorer360"]{height:64px}.pl-box img[src*="tourease"]{height:46px}}</style>
-<section class="sec" data-screen-label="06 Final Call"><div class="wrap"><div class="head"><span class="chip">Your Team Presses Submit</span><h2>A person makes <span class="accent">the final call.</span></h2><p>Propellus moves your application from the portal to the official visa site: filled, checked, documentation matched. You press submit.</p><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div><div class="pair"><figure class="cap"><figcaption>To the official portal</figcaption><div class="frame"><img src="assets/frames/ota-40s.jpg" alt="Application on its way to the official visa portal"></div></figure><figure class="cap with"><figcaption>Ready for submission</figcaption><div class="frame"><img src="assets/frames/agency-51s.jpg" alt="Application ready, with the final submit button"></div></figure></div></div></section>
-<footer class="foot"><div class="wrap"><div class="foot-top"><div class="foot-brand"><a class="logo" href="index.html"><img src="propellus-logo.png" alt=""><span>Propellus</span></a><p>The AI infrastructure layer for visa processing.</p></div><div><h5>Product</h5><ul><li><a href="ota.html">For OTAs</a></li><li><a href="agents.html">For travel agents</a></li><li><a href="how-it-works.html">How it works</a></li><li><a href="security.html">Security</a></li></ul></div><div><h5>Company</h5><ul><li><a href="fulfillment-partners.html">Partners</a></li><li><a href="about.html">About</a></li><li><a href="team.html">Team</a></li><li><a href="investors.html">Investors</a></li><li><a href="contact.html">Contact</a></li><li><a href="mailto:support@propellus.co">support@propellus.co</a></li></ul></div><div><h5>Legal</h5><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li></ul></div></div><div class="foot-bot">© 2026 Propellus Pte. Ltd. All rights reserved.</div></div></footer>
-<script src="image-slot.js"></script>
+
+<section class="section band-white" data-screen-label="02 The Gap">
+  <div class="container">
+    <div class="ota-head">
+      <span class="label">THE GAP</span>
+      <h2 class="h2">Your customers book the trip. The visa is <span class="accent">left to them.</span></h2>
+      <p class="body-lg">Visa requirements are fragmented, so most booking flows stop at the ticket. Propellus adds the visa step to the trip your customer is already booking.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section band-tint" data-screen-label="03 Guided Steps">
+  <div class="container ota-split">
+    <div class="ota-txt">
+      <span class="label">FOR THE TRAVELLER</span>
+      <h2 class="h2">Your traveller is guided, <span class="accent">step by step.</span></h2>
+      <p class="body-lg">Inside your app, the traveller sees exactly what to bring: passport, photo, bank statements, bookings. Each document has its own step and a clear status, so nothing is missed on the way in.</p>
+    </div>
+    <figure class="shot"><picture><source srcset="assets/shots/shot-ota-upload-v.webp" type="image/webp"><img src="assets/shots/shot-ota-upload-v.jpg" width="411" height="392" alt="Upload checklist with a status for each document" loading="lazy"></picture><figcaption>Each document has its own step and status, so the traveller knows what is still missing.</figcaption></figure>
+  </div>
+</section>
+
+<section class="section band-white" data-screen-label="04 Back-and-forth">
+  <div class="container">
+    <div class="ota-head">
+      <span class="label">MISSING DOCUMENTS</span>
+      <h2 class="h2">Questions and missing documents, <span class="accent">handled in the flow.</span></h2>
+      <p class="body-lg">No more back-and-forth for one application. When a passport is expired, a photo is too small or a statement is missing, the traveller gets a clear request and a suggested fix in chat, and can reply or re-upload right there.</p>
+    </div>
+    <div class="ota-pair">
+      <figure class="shot"><span class="shot-tag">Today: over chat</span><picture><source srcset="assets/shots/shot-agency-chat.webp" type="image/webp"><img src="assets/shots/shot-agency-chat.jpg" width="426" height="800" alt="Chat thread collecting documents over several days" loading="lazy"></picture><figcaption>Requests and documents arrive in a chat thread over several days.</figcaption></figure>
+      <figure class="shot"><span class="shot-tag with">With Propellus: in the flow</span><picture><source srcset="assets/shots/shot-agency-gaps-v.webp" type="image/webp"><img src="assets/shots/shot-agency-gaps-v.jpg" width="411" height="385" alt="Cross-check screen with potential gaps flagged on the passport, photo and bank statement" loading="lazy"></picture><figcaption>A potential gap is flagged on the document itself, with a suggested fix.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section band-tint" data-screen-label="05 Prepare">
+  <div class="container">
+    <div class="ota-head">
+      <span class="label">HOW IT PREPARES</span>
+      <h2 class="h2">Read. Cross-check. Flag gaps. <span class="accent">Prepare.</span></h2>
+      <p class="body-lg">Propellus AI reads every document, cross-checks and validates the details, highlights potential gaps and helps fix them. Then it prepares the visa form and sorts, resizes and attaches every document.</p>
+    </div>
+    <div class="pt">
+      <div class="pt-tabs" role="tablist" aria-label="How Propellus prepares an application">
+        <button class="pt-tab" role="tab" id="pt-t0" aria-controls="pt-p0" aria-selected="true" type="button"><b>1</b>Reads</button>
+        <button class="pt-tab" role="tab" id="pt-t1" aria-controls="pt-p1" aria-selected="false" tabindex="-1" type="button"><b>2</b>Cross-checks</button>
+        <button class="pt-tab" role="tab" id="pt-t2" aria-controls="pt-p2" aria-selected="false" tabindex="-1" type="button"><b>3</b>Flags gaps</button>
+        <button class="pt-tab" role="tab" id="pt-t3" aria-controls="pt-p3" aria-selected="false" tabindex="-1" type="button"><b>4</b>Prepares</button>
+      </div>
+      <div>
+        <div class="pt-panel" role="tabpanel" id="pt-p0" aria-labelledby="pt-t0"><figure class="shot"><picture><source srcset="assets/shots/shot-ota-reads-v.webp" type="image/webp"><img src="assets/shots/shot-ota-reads-v.jpg" width="420" height="265" alt="Propellus reading the passport and ID card" loading="lazy"></picture><figcaption>Propellus reads every document the traveller uploads.</figcaption></figure></div>
+        <div class="pt-panel" role="tabpanel" id="pt-p1" aria-labelledby="pt-t1" hidden><figure class="shot"><picture><source srcset="assets/shots/shot-ota-gaps-v.webp" type="image/webp"><img src="assets/shots/shot-ota-gaps-v.jpg" width="417" height="352" alt="Cross-check screen with each document validated" loading="lazy"></picture><figcaption>Each document is cross-checked and validated against the others.</figcaption></figure></div>
+        <div class="pt-panel" role="tabpanel" id="pt-p2" aria-labelledby="pt-t2" hidden><figure class="shot"><picture><source srcset="assets/shots/shot-agency-gaps-v.webp" type="image/webp"><img src="assets/shots/shot-agency-gaps-v.jpg" width="411" height="385" alt="Potential gaps flagged on the passport, photo and bank statement" loading="lazy"></picture><figcaption>Potential gaps are highlighted on the document, with a suggested fix.</figcaption></figure></div>
+        <div class="pt-panel" role="tabpanel" id="pt-p3" aria-labelledby="pt-t3" hidden><figure class="shot"><picture><source srcset="assets/shots/shot-ota-prepares-v.webp" type="image/webp"><img src="assets/shots/shot-ota-prepares-v.jpg" width="390" height="500" alt="Visa form prepared with documents sorted by type" loading="lazy"></picture><figcaption>The visa form is prepared and every document is sorted, resized and attached.</figcaption></figure></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="logos" data-screen-label="Partner Logos">
+  <div class="container">
+    <span class="label">WORKING WITH</span>
+    <div class="logo-row">
+      <span class="lg lg-gozayaan"><img src="assets/partner-logos/gozayaan.svg" alt="GoZayaan" width="130" height="42" loading="lazy"></span>
+      <picture class="lg lg-aeg"><source srcset="assets/partner-logos/aeg-sm.webp" type="image/webp"><img src="assets/partner-logos/aeg-sm.png" alt="AEG Travel" width="400" height="200" loading="lazy"></picture>
+      <picture class="lg lg-e360"><source srcset="assets/partner-logos/explorer360-sm.webp" type="image/webp"><img src="assets/partner-logos/explorer360-sm.png" alt="Explorer 360" width="320" height="320" loading="lazy"></picture>
+      <picture class="lg lg-tourease"><source srcset="assets/partner-logos/tourease-sm.webp" type="image/webp"><img src="assets/partner-logos/tourease-sm.png" alt="TourEase" width="400" height="264" loading="lazy"></picture>
+      <picture class="lg lg-gb"><source srcset="assets/partner-logos/gb-limousine-sm.webp" type="image/webp"><img src="assets/partner-logos/gb-limousine-sm.png" alt="GB Limousine" width="280" height="138" loading="lazy"></picture>
+    </div>
+  </div>
+</section>
+
+<section class="section band-white" data-screen-label="06 Final Call">
+  <div class="container">
+    <div class="ota-head">
+      <span class="label">YOUR TEAM SUBMITS</span>
+      <h2 class="h2">A person makes <span class="accent">the final call.</span></h2>
+      <p class="body-lg">Propellus moves your application from the portal to the official visa site: filled, checked, documentation matched. You press submit.</p>
+    </div>
+    <div class="ota-pair">
+      <figure class="shot"><span class="shot-tag">To the official portal</span><picture><source srcset="assets/shots/shot-ota-portal-v.webp" type="image/webp"><img src="assets/shots/shot-ota-portal-v.jpg" width="396" height="625" alt="Prepared application being carried to the official visa portal" loading="lazy"></picture><figcaption>The prepared application is carried to the official visa portal.</figcaption></figure>
+      <figure class="shot"><span class="shot-tag with">Ready for submission</span><picture><source srcset="assets/shots/shot-agency-submit-v.webp" type="image/webp"><img src="assets/shots/shot-agency-submit-v.jpg" width="390" height="623" alt="Application marked ready to submit, with the submit button" loading="lazy"></picture><figcaption>Your team reviews the application and presses submit.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta band-tint" data-screen-label="07 CTA">
+  <div class="container">
+    <h2 class="h2">See Propellus in your booking flow.</h2>
+    <div class="hero-cta"><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div>
+  </div>
+</section>
+
+<div data-footer></div>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.pt-tab'));
+  function sel(i, focus) {
+    tabs.forEach(function (t, k) { var on = k === i; t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
+    if (focus) tabs[i].focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { sel(i); });
+    t.addEventListener('keydown', function (e) { if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); sel((i + 1) % tabs.length, true); } if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); sel((i + tabs.length - 1) % tabs.length, true); } });
+  });
+})();
+</script>
+<script src="chrome.js" defer></script>
 </body>
 </html>

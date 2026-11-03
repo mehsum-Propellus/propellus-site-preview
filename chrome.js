@@ -22,12 +22,11 @@
       { label: 'Security', href: 'security.html' },
     ]},
     { title: 'Company', links: [
-      { label: 'Partners', href: 'fulfillment-partners.html' },
+      { label: 'Visa processing partners', href: 'fulfillment-partners.html' },
       { label: 'About', href: 'about.html' },
       { label: 'Team', href: 'team.html' },
       { label: 'Investors', href: 'investors.html' },
       { label: 'Contact', href: 'contact.html' },
-      { label: 'support@propellus.co', href: 'mailto:support@propellus.co' },
     ]},
     { title: 'Legal', links: [
       { label: 'Privacy Policy', href: 'privacy.html' },
@@ -55,7 +54,7 @@
           <div class="nav-cta">
             <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a>
           </div>
-          <button class="nav-burger" aria-label="Open menu" id="navBurger">
+          <button class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileOverlay" id="navBurger">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -65,7 +64,7 @@
         </div>
       </nav>
 
-      <div class="mobile-overlay" id="mobileOverlay">
+      <div class="mobile-overlay" id="mobileOverlay" role="dialog" aria-modal="true" aria-label="Menu">
         <div class="mobile-overlay-top">
           <a class="nav-logo" href="index.html">
             <span class="mark">${LOGO_IMG}</span>
@@ -88,7 +87,7 @@
 
   function buildFooter() {
     const colsHTML = FOOTER_COLS.map(c => `
-      <div class="footer-col">
+      <div class="footer-col${c.title === 'Legal' ? ' legal' : ''}">
         <h5>${c.title}</h5>
         <ul>${c.links.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}</ul>
       </div>
@@ -107,9 +106,8 @@
             </div>
             ${colsHTML}
           </div>
-          <div class="footer-bottom">
-            © 2026 Propellus Pte. Ltd. · Singapore · All rights reserved.
-          </div>
+          <p class="footer-support">Support: <a href="mailto:support@propellus.co">support@propellus.co</a></p>
+          <div class="footer-bottom"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · © 2026 Propellus Pte. Ltd.<span class="fb-loc"> · Singapore</span></div>
         </div>
       </footer>
     `;
@@ -135,29 +133,17 @@
       window.addEventListener('scroll', update, { passive: true });
     }
 
-    // Mobile menu
+    // Mobile menu (S10)
     const burger = document.getElementById('navBurger');
     const closeBtn = document.getElementById('navClose');
     const overlay = document.getElementById('mobileOverlay');
+    const openMenu = () => { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; burger.setAttribute('aria-expanded','true'); const f = overlay.querySelector('.mobile-links a'); if (f) f.focus(); };
+    const closeMenu = (restore) => { if (!overlay.classList.contains('open')) return; overlay.classList.remove('open'); document.body.style.overflow = ''; burger.setAttribute('aria-expanded','false'); if (restore) burger.focus(); };
     if (burger && overlay) {
-      burger.addEventListener('click', () => {
-        overlay.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    }
-    if (closeBtn && overlay) {
-      closeBtn.addEventListener('click', () => {
-        overlay.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    }
-    if (overlay) {
-      overlay.querySelectorAll('.mobile-links a, .mobile-cta a').forEach(a => {
-        a.addEventListener('click', () => {
-          overlay.classList.remove('open');
-          document.body.style.overflow = '';
-        });
-      });
+      burger.addEventListener('click', openMenu);
+      if (closeBtn) closeBtn.addEventListener('click', () => closeMenu(true));
+      overlay.querySelectorAll('.mobile-links a, .mobile-cta a').forEach(a => a.addEventListener('click', () => closeMenu(false)));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(true); });
     }
   }
 

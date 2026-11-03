@@ -19,7 +19,7 @@
   .hiw { --toc-w:248px; }
 
   /* --- Spec cover (hero) --- */
-  .hiw-cover { position:relative; background:var(--bg-deep); overflow:hidden; min-height:92vh; display:flex; align-items:center; padding:128px 0 80px; }
+  .hiw-cover { position:relative; background:#FFFFFF; overflow:hidden; display:flex; align-items:center; padding:136px 0 72px; }
   .hiw-cover::before { content:""; position:absolute; inset:0;
     background-image:linear-gradient(#FFFFFF 1px, transparent 1px), linear-gradient(90deg, #FFFFFF 1px, transparent 1px);
     background-size:46px 46px; mask-image:radial-gradient(120% 90% at 80% 0%, #000 30%, transparent 78%); }
@@ -92,7 +92,7 @@
   .side p { font-size:14px; line-height:1.55; color:var(--text-secondary); margin-top:7px; }
 
   /* 03 · engine jobs (terminal cards) */
-  .jobs { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin-top:30px; }
+  .jobs { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:20px; margin-top:30px; }
   .job { background:var(--bg-deep); border:1px solid var(--border); border-radius:14px; padding:20px; transition:all 200ms ease; }
   .job:hover { border-color:var(--accent-border); transform:translateY(-3px); }
   .job .jk { font-size:13px; color:var(--accent-deep); }
@@ -262,7 +262,18 @@ html body .cb-step{background:#FFFFFF !important;border:1px solid #CDEFF0 !impor
 html body .cb-step.active{border-left:2px solid #00767D !important;border-color:#CDEFF0 !important;border-left-color:#00767D !important;transform:none !important}
 html body .cb-step .ct{color:#0B1723}html body .cb-step .cs{color:#5A6670 !important}html body .cb-step.active .cs{color:#00767D !important}
 html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;box-shadow:none !important}
-.hiw-frame-bar{display:none !important}.hiw-cover::before,.hiw-cover::after{display:none !important}</style>
+.hiw-frame-bar{display:none !important}.hiw-cover::before,.hiw-cover::after{display:none !important}
+html body .cb-step.active{border:1px solid #00767D !important}
+html body .cb-step.active .cbic{background:#00767D !important;color:#FFFFFF !important}
+html body .cb-step.active .cbic svg,html body .cb-step.active .cbic svg>:first-child{stroke:#FFFFFF}
+html body .cb-step.past{opacity:1}
+@media(max-width:899px){.hiw-cover{padding:112px 0 56px}}
+@media(max-width:860px){.cb{grid-template-columns:1fr}}
+.cb-left .cap{margin-top:16px}
+.pc-rule-line{margin-top:20px;font-size:17px;color:#0B1723;max-width:70ch}
+.pc-rule-line b{color:#00767D}
+.hood-card .st a{color:#00767D;font-weight:600}
+</style>
 </head>
 <body class="hiw hero-immersive">
 
@@ -278,7 +289,6 @@ html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;b
         <p class="sub">A look inside the Propellus processing layer — how a visa application flows from a traveller's first message to a prepared application, ready for your team to review. Configured, not coded.</p>
         <div class="hiw-meta">
           <span>platform <b>AI-native</b></span>
-          <span>spec updated <b>Jun 2026</b></span>
         </div>
       </div>
       <div class="hiw-cover-vis">
@@ -287,10 +297,10 @@ html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;b
             <div class="hm-brand"><img src="propellus-logo.png" alt="" /><span>Propellus <b>AI Engine</b></span></div>
             <div class="hm-msg">I&rsquo;ve read your passport. Confirm these details:</div>
             <div class="hm-fields">
-              <div class="hm-f"><span class="k">Full name</span><span class="v">MARIA S. CRUZ</span><span class="cf hi">High</span></div>
-              <div class="hm-f"><span class="k">Passport no</span><span class="v">P1234567</span><span class="cf hi">High</span></div>
-              <div class="hm-f"><span class="k">Expiry</span><span class="v">14 Aug 2031</span><span class="cf hi">High</span></div>
-              <div class="hm-f"><span class="k">Nationality</span><span class="v">PHL</span><span class="cf md">Medium</span></div>
+              <div class="hm-f"><span class="k">Full name</span><span class="v">ALEX MORGAN</span><span class="cf hi">High</span></div>
+              <div class="hm-f"><span class="k">Passport no</span><span class="v">A00000000</span><span class="cf hi">High</span></div>
+              <div class="hm-f"><span class="k">Expiry</span><span class="v">01 Jan 2034</span><span class="cf hi">High</span></div>
+              <div class="hm-f"><span class="k">Nationality</span><span class="v">GBR</span><span class="cf md">Medium</span></div>
             </div>
                       </div>
         </div>
@@ -319,9 +329,9 @@ html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;b
         <div class="container"><div class="hiw-sec">
         <div class="hiw-eye">THE WORKFLOW MODEL</div>
         <h2>A new visa journey is assembled, not coded.</h2>
-        <p class="intro">Every destination's rules live in one layer. Change a rule once, and every application follows. Adding a destination doesn't wait on engineering.</p>
+        <p class="intro">Every destination's rules sit in one layer. Change a rule once, and every application follows. Adding a destination doesn't wait on engineering.</p>
         <div class="cb">
-          <div>
+          <div class="cb-left">
             <div class="cb-flow" id="cbFlow">
               <div class="cb-step" data-i="0"><span class="cbic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><div><div class="ct">Step</div><div class="cs">ask destination</div></div><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
               <div class="cb-step" data-i="1"><span class="cbic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6m0 0 4-3m-4 3-4-3M6 21l6-9 6 9"/></svg></span><div><div class="ct">Condition</div><div class="cs">if Schengen</div></div><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
@@ -329,6 +339,7 @@ html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;b
               <div class="cb-step" data-i="3"><span class="cbic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span><div><div class="ct">AI Action</div><div class="cs">read · cross-check · flag · prepare</div></div><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
               <div class="cb-step" data-i="4"><span class="cbic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg></span><div><div class="ct">End</div><div class="cs">Your team reviews and submits</div></div><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
             </div>
+            <div class="cap"><i></i> Every rule change is previewed before it takes effect, and can be rolled back.</div>
           </div>
           <div class="cb-phone">
             <div class="cb-phone-hd"><img src="propellus-logo.png" alt="" /><span>Propellus <b>E-Visa Assistant</b></span></div>
@@ -339,11 +350,10 @@ html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;b
               <div class="cb-bub ai" data-i="2">Great &mdash; let's get your documents ready.</div>
               <div class="cb-bub usr" data-i="3">passport.jpg uploaded</div>
               <div class="cb-bub ai" data-i="3">Reads documents, cross-checks, flags gaps, prepares the application.</div>
-              <div class="cb-bub sys" data-i="4">Propellus prepares the application. Your team checks and submits.</div>
+              <div class="cb-bub ai" data-i="4">Done. Your documents are checked and two gaps are flagged for your agent.</div>
             </div>
           </div>
         </div>
-        <div class="cap"><i></i> Every rule change is previewed before it goes live, and can be rolled back.</div>
         </div></div>
       </section>
 
@@ -363,24 +373,24 @@ html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;b
       </section>
 
       <!-- 07 · BEHAVIOUR -->
-      <section class="hiw-band white" id="behaviour" data-screen-label="07 Behaviour">
+      <section class="hiw-band grey" id="behaviour" data-screen-label="07 Behaviour">
         <div class="container"><div class="hiw-sec">
         <div class="hiw-eye">HOW THE AI BEHAVES</div>
         <h2>AI prepares the work. The human approves it.</h2>
         <p class="intro">Every AI surface across the platform follows the same principles.</p>
+        <p class="pc-rule-line"><b>The rule behind all five:</b> No consequential action happens without explicit human confirmation.</p>
         <div class="pc">
           <div class="pc-card"><span class="ico ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></span><h4>Confidence is visible</h4><p>Every output carries a High / Medium / Low indicator.</p></div>
           <div class="pc-card"><span class="ico ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span><h4>Reasoning is visible</h4><p>Every suggestion includes a one-line "why."</p></div>
           <div class="pc-card"><span class="ico ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13M3 7l4-4M3 7l4 4M21 17H8M21 17l-4-4M21 17l-4 4"/></svg></span><h4>Override is always available</h4><p>Accept, edit, or dismiss, every time.</p></div>
           <div class="pc-card"><span class="ico ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 14l2 2 4-4"/></svg></span><h4>Audit is automatic</h4><p>Every suggestion and decision is logged.</p></div>
           <div class="pc-card"><span class="ico ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><h4>Privacy is preserved</h4><p>One agency's data never trains another's.</p></div>
-          <div class="pc-card pc-rule"><h4>The rule behind all five</h4><p>No consequential action happens without explicit human confirmation.</p></div>
         </div>
         </div></div>
       </section>
 
       <!-- 08 · UNDER THE HOOD -->
-      <section class="hiw-band grey" id="hood" data-screen-label="08 Hood">
+      <section class="hiw-band white" id="hood" data-screen-label="08 Hood">
         <div class="container"><div class="hiw-sec">
         <div class="hiw-eye">UNDER THE HOOD</div>
         <h2>AI-native architecture, from the ground up.</h2>
@@ -391,7 +401,7 @@ html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;b
           </div>
           <div class="hood-card">
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
-            <h4>Cloud infrastructure</h4><p>AWS and Azure with data residency options.</p><div class="st">Security docs available on request</div>
+            <h4>Cloud infrastructure</h4><p>AWS and Azure with data residency options.</p><div class="st"><a href="security.html">Security docs available on request</a></div>
           </div>
           <div class="hood-card">
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><circle cx="8" cy="15" r="1.5"/><path d="M12 15h5"/></svg></span>
@@ -403,7 +413,7 @@ html body .cb-step .chk{background:#F2FCFC !important;color:#00767D !important;b
 
 
 <!-- CLOSING -->
-<section class="final-cta" data-screen-label="11 Closing">
+<section class="final-cta band-tint" data-screen-label="11 Closing">
   <div class="container">
     <h2 class="h2">See the workflow in a demo.</h2>
     <div class="hero-cta"><a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a></div>

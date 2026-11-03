@@ -28,8 +28,8 @@
     gap:16px;
   }
   .origin-photo {
-    width:200px;
-    height:200px;
+    width:260px;
+    height:325px;
     border-radius:16px;
     overflow:hidden;
     background:linear-gradient(135deg, var(--accent-subtle), rgba(0,197,206,0.02));
@@ -39,7 +39,7 @@
   .origin-photo img { width:100%; height:100%; object-fit:cover; display:block; }
   @media (max-width: 900px) {
     .origin-portrait { position:static; flex-direction:row; align-items:center; gap:20px; }
-    .origin-photo { width:96px; height:96px; border-radius:14px; }
+    .origin-photo { width:120px; height:150px; border-radius:14px; flex-shrink:0; }
   }
   .origin-byline .origin-name {
     font-size:16px;
@@ -48,7 +48,7 @@
     letter-spacing:-0.01em;
   }
   .origin-byline .origin-role {
-    font-size:12px;
+    font-size:14px;
     color:var(--accent-deep);
     letter-spacing:0.03em;
     margin-top:4px;
@@ -91,6 +91,8 @@
   }
   .principle h3 { font-size:18px; font-weight:600; color:var(--text-primary); margin-bottom:8px; letter-spacing:-0.005em; }
   .principle p { color:var(--text-secondary); font-size:14.5px; line-height:1.55; }
+.origin-more{margin-top:32px;font-size:17px}
+.hs45{width:100%;height:100%;object-fit:cover !important;object-position:50% 50% !important;transform:none !important;filter:none !important}
 </style>
 </head>
 <body class="hero-immersive">
@@ -106,7 +108,7 @@
         <h1 class="h1">We don't issue visas. <span class="accent">We run the rails.</span></h1>
         <p class="hero-im-sub">Propellus is the AI-native infrastructure layer behind the global visa processing ecosystem — connecting OTAs, travel agents, and travelers through a single intelligence layer.</p>
         <div class="hero-cta">
-          <a class="btn btn-accent btn-cal" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book a demo</a>
+          <a class="btn btn-accent" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
     </div>
@@ -114,11 +116,11 @@
 </section>
 
 <!-- ORIGIN STORY -->
-<section class="section bg-secondary">
+<section class="section band-tint" data-screen-label="02 Origin">
   <div class="container">
     <div class="origin-grid">
       <div class="origin-portrait">
-        <div class="origin-photo"><img src="portraits/mehsum.png" alt="Mehsum Sayani"/></div>
+        <div class="origin-photo"><img src="headshots/mehsum-sayani.jpg" class="hs45" alt="Mehsum Sayani" width="640" height="800"/></div>
         <div class="origin-byline">
           <div class="origin-name">Mehsum Sayani</div>
           <div class="origin-role">CEO &amp; Co-Founder · Propellus</div>
@@ -126,29 +128,17 @@
       </div>
       <div class="origin-story">
         <span class="label">HOW IT STARTED</span>
-        <h2 class="h2 with-underline">A single digit. A missed flight. A company.</h2>
-        <p class="body-lg" style="margin-top:32px;">Our CEO Mehsum Sayani spent 22 years at Standard Chartered building the rails of consumer finance — branch banking, credit cards, payments, identity, and a $150M cybersecurity transformation at bank scale.</p>
-        <p class="body-lg">Then, on a family trip to London, his son was denied boarding at the Dubai gate. One visa digit was wrong. The trip collapsed at the airline counter.</p>
+        <h2 class="h2 with-underline">A single digit. A cancelled trip. A company.</h2>
+        <p class="body-lg" style="margin-top:32px;">Our CEO Mehsum Sayani spent <!-- NEEDS VERIFICATION -->22 years at Standard Chartered<!-- /NEEDS VERIFICATION --> building the rails of consumer finance — branch banking, credit cards, payments, identity, and a <!-- NEEDS VERIFICATION -->$150M cybersecurity transformation<!-- /NEEDS VERIFICATION --> at bank scale.</p>
+        <p class="body-lg">Then, on a family trip to London, one digit on his son's visa was wrong. The trip ended before it began.</p>
         <p class="pullquote">He recognised it as a fixable rails problem, and AI made now the moment.</p>
+        <p class="origin-more"><a class="text-link" href="team.html">Meet the team&nbsp;→</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TEAM POINTER -->
-<div class="strip">
-  <div class="container">
-    <div class="strip-inner">
-      <div>
-        <div class="caption" style="margin-bottom:6px;">THE TEAM</div>
-      </div>
-      <a href="team.html" style="color:var(--accent-deep);font-weight:600;">Meet the team →</a>
-    </div>
-  </div>
-</div>
-
-
-<section class="final-cta" data-screen-label="Closing">
+<section class="final-cta band-white" data-screen-label="03 Closing">
   <div class="container">
     <h2 class="h2">Talk to the team in a demo.</h2>
     <div class="hero-cta">

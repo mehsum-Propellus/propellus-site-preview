@@ -17,7 +17,7 @@
 <div data-nav data-active="security"></div>
 
 <!-- HERO -->
-<section class="hero-im compact" data-screen-label="01 Security Hero" style="background:#FFFFFF !important;background-image:none !important;min-height:auto !important;">
+<section class="hero-im compact" data-screen-label="01 Security Hero">
   <div class="container">
     <div class="hero-im-grid solo">
       <div class="hero-im-inner fade-in" style="max-width:1040px;">
@@ -25,7 +25,7 @@
         <h1 class="h1"><span class="accent">Security-first</span> architecture, built for the trust requirements of visa infrastructure.</h1>
         <p class="hero-im-sub">We process passport data and personal identity records. Security is not a feature — it is the foundation.</p>
         <div class="hero-cta">
-          <a class="btn btn-accent btn-cal" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Book a demo</a>
+          <a class="btn btn-accent" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
 </section>
 
 <!-- DATA PRACTICES -->
-<section class="section bg-secondary" style="background:#F2FCFC !important;">
+<section class="section band-tint" data-screen-label="02 Data Practices">
   <div class="container">
     <div class="section-head">
       <span class="label">WHAT WE COLLECT AND WHY</span>
@@ -60,13 +60,13 @@
     </div>
 
     <p class="small" style="margin-top:24px; color:var(--text-muted);">
-      // Detailed retention schedules are defined per engagement in our data processing agreements.
+      Detailed retention schedules are defined per engagement in our data processing agreements.
     </p>
   </div>
 </section>
 
 <!-- INFRASTRUCTURE -->
-<section class="section" style="background:#FFFFFF !important;">
+<section class="section band-white" data-screen-label="03 Infrastructure">
   <div class="container">
     <div class="section-head">
       <span class="label">INFRASTRUCTURE</span>
@@ -98,7 +98,7 @@
   .sb-row:hover { background:rgba(0,194,203,0.035); }
   .sb-ico { width:40px; height:40px; border-radius:10px; background:var(--accent-tint); color:var(--accent-deep); display:grid; place-items:center; }
   .sb-ico svg { width:19px; height:19px; }
-  .sb-key { font-size:12.5px; color:var(--text-secondary); }
+  .sb-key { font-size:14px; color:var(--text-secondary); }
   .sb-val { font-size:14.5px; color:var(--text-primary); font-weight:500; }
   .sb-pill { display:inline-flex; align-items:center; gap:7px; font-size:11.5px; padding:5px 11px; border-radius:999px; white-space:nowrap; }
   .sb-pill.checking { color:#e89923; background:#fff8ec; border:1px solid #f1d3a0; }
@@ -107,8 +107,8 @@
   .sb-pill.checking i { animation:sbBlink 0.7s infinite; }
   @keyframes sbBlink { 0%,100%{opacity:.3;} 50%{opacity:1;} }
   .sb-detail { grid-column:1 / -1; max-height:0; overflow:hidden; transition:max-height 280ms ease, margin-top 280ms ease; }
-  .sb-row.open .sb-detail { max-height:110px; margin-top:14px; }
-  .sb-detail p { font-size:13.5px; line-height:1.55; color:var(--text-secondary); padding-top:14px; border-top:1px dashed var(--border); }
+  .sb-row.open .sb-detail { max-height:140px; margin-top:8px; }
+  .sb-detail p { font-size:15px; line-height:1.55; color:var(--text-secondary); padding-top:0; border-top:0; }
   @media (max-width: 720px) {
     .sb-row { grid-template-columns:40px 1fr auto; }
     .sb-key { display:none; }
@@ -157,10 +157,13 @@
     .infra-row { grid-template-columns:1fr; gap:4px; }
     .infra-val { font-size:15px; }
   }
-.sb-pill,.sb-overall{display:none !important}</style>
+.sb-pill,.sb-overall{display:none !important}
+.timeline-item.now .timeline-when .dot{background:#00767D;border-color:#00767D;box-shadow:none}
+.timeline-when span,.timeline-body{text-decoration:none;border:0}
+</style>
 
 <!-- COMPLIANCE ROADMAP -->
-<section class="section bg-secondary" style="background:#F2FCFC !important;">
+<section class="section band-tint" data-screen-label="04 Compliance">
   <div class="container">
     <div class="section-head">
       <span class="label">COMPLIANCE</span>
@@ -174,18 +177,14 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-when"><span class="dot"></span><span>H2 2027</span></div>
-        <div class="timeline-body">SOC 2: target H2 2027</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-when"><span class="dot"></span><span>H2 2027</span></div>
-        <div class="timeline-body">ISO 27001: target H2 2027</div>
+        <div class="timeline-body">SOC 2 and ISO 27001 (targets)</div>
       </div>
     </div>
   </div>
 </section>
 
 
-<section class="final-cta" data-screen-label="Closing">
+<section class="final-cta band-white" data-screen-label="05 Closing">
   <div class="container">
     <h2 class="h2">Review our security approach in a demo.</h2>
     <div class="hero-cta">

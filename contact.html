@@ -107,6 +107,18 @@
 .pc-thanks h2{font-size:24px;font-weight:600;color:#0B1723}
 .pc-thanks p{font-size:15px;color:#3E4F60}
 @media(max-width:700px){.pc-row{grid-template-columns:minmax(0,1fr)}}
+.ct-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:start}
+.hs-wrap{background:#FFFFFF;border:1px solid #CDEFF0;border-radius:16px;box-shadow:0 2px 8px rgba(11,23,35,.06);padding:24px;color:#0B1723}
+.ct-note{font-size:15px;margin-top:12px}
+.ct-aside{display:flex;flex-direction:column;gap:40px}
+.ct-block{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.ct-block p{margin:0}
+html body .ct-h{font-size:20px;font-weight:600;line-height:1.3;color:#0B1723;margin:0}
+.ct-agenda{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px}
+.ct-agenda li{font-size:17px;line-height:1.5;color:#0B1723;padding-left:4px}
+.ct-agenda li::marker{color:#00767D;font-weight:600}
+@media(max-width:880px){.ct-grid{grid-template-columns:minmax(0,1fr);gap:40px}}
+@media(max-width:479px){.hs-wrap{padding:0;border:0;box-shadow:none;background:transparent}}
 </style>
 </head>
 <body class="hero-immersive">
@@ -119,28 +131,32 @@
       <div class="hero-im-inner fade-in">
         <span class="label">BOOK A DEMO</span>
         <h1 class="h1">See the <span class="accent">platform.</span></h1>
-        <p class="hero-im-sub">Tell us a little about your business and we'll walk you through the Propellus visa processing layer — live, with the workflows that matter to you.</p>
-        <div class="hero-cta">
-          <a class="btn btn-accent btn-cal" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a>
-        </div>
+        <p class="hero-im-sub">Tell us a little about your business and we'll walk you through the Propellus visa processing layer, with the workflows that matter to you.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" style="padding-top:0;" data-screen-label="02 Contact Form">
-  <div class="container">
-    <div class="hs-wrap" style="max-width:760px;background:#FFFFFF;border:1px solid #CDEFF0;border-radius:16px;box-shadow:0 2px 8px rgba(11,23,35,.06);padding:24px;color:#0B1723;"><div class="hs-form-frame" data-region="na2" data-form-id="bff561d5-522e-4c7a-8aab-4c3d3f9511a2" data-portal-id="246643126"></div></div>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0;" data-screen-label="03 Demo Agenda">
-  <div class="container">
-    <div class="section-head">
-      <span class="label">WHAT THE DEMO COVERS</span>
-      <h2 class="h2">What the demo covers.</h2>
+<section class="section band-tint" data-screen-label="02 Contact Form">
+  <div class="container ct-grid">
+    <div class="ct-form">
+      <div class="hs-wrap"><div class="hs-form-frame" data-region="na2" data-form-id="bff561d5-522e-4c7a-8aab-4c3d3f9511a2" data-portal-id="246643126"></div></div>
+      <p class="ct-note">We'll reply by email to set a time.</p>
+      <p class="ct-note">Form not loading? Email <a href="mailto:support@propellus.co">support@propellus.co</a>.</p>
     </div>
-    <ol class="demo-agenda"><li>See an application prepared from real documents.</li><li>See how gaps are flagged before your team reviews.</li><li>Talk through setup for your team.</li></ol>
+    <aside class="ct-aside">
+      <div class="ct-block">
+        <h2 class="ct-h">Prefer to pick a time?</h2>
+        <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a>
+        <p><a href="mailto:support@propellus.co">support@propellus.co</a></p>
+        <p>Singapore</p>
+      </div>
+      <div class="ct-block">
+        <h2 class="ct-h">What the demo covers.</h2>
+        <ol class="ct-agenda"><li>See how gaps are flagged before your team reviews.</li><li>Talk through setup for your team.</li></ol>
+        <p class="ct-note">Demos use sample documents only.</p>
+      </div>
+    </aside>
   </div>
 </section>
 
