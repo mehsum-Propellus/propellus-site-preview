@@ -374,17 +374,17 @@
       <div class="inv-funds" aria-label="Lead investors">
         <span class="label">LEAD INVESTORS</span>
         <div class="inv-fund-row">
-          <figure><span class="inv-fund-text">Felix Capital</span><figcaption>Felix Strategic Investments</figcaption></figure>
-          <figure><img src="investors/meraki.png" alt="" width="130" height="130"><figcaption>Meraki Capital</figcaption></figure>
-          <figure><img src="investors/loyalvc.png" alt="" width="145" height="145"><figcaption>Loyal VC</figcaption></figure>
+          <figure class="inv-fund-plain"><span class="inv-fund-name">Felix Capital</span></figure>
+          <figure class="inv-fund-plain"><span class="inv-fund-name">Meraki Capital</span></figure>
+          <figure class="inv-fund-plain"><span class="inv-fund-name">Loyal VC</span></figure>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRACTION STRIP -->
-<div class="strip">
+<!-- TRACTION STRIP (hidden until real figures are approved) -->
+<div class="strip" hidden>
   <div class="container">
     <div class="strip-inner">
       <div>
@@ -449,6 +449,7 @@
 .inv-fund-row img{width:88px;height:88px;object-fit:contain;border-radius:16px}
 .inv-fund-text{display:flex;align-items:center;justify-content:center;width:88px;height:88px;border:1px solid #CDEFF0;border-radius:16px;background:#FFFFFF;font-size:15px;font-weight:600;line-height:1.25;color:#0B1723;text-align:center;padding:8px}
 .inv-fund-row figcaption{font-size:14px;font-weight:600;color:#0B1723;line-height:1.35}
+.inv-fund-row figure.inv-fund-plain{justify-content:center;height:88px}.inv-fund-name{font-size:16px;font-weight:600;line-height:1.3;color:#0B1723}
 @media(max-width:899px){.inv-funds{justify-self:start}}
 @media(max-width:639px){
   .bk-grid,.bk-grid.lead,.bk-grid.bk-angels{display:flex !important;flex-direction:column;gap:12px}

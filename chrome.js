@@ -31,6 +31,7 @@
     { title: 'Legal', links: [
       { label: 'Privacy Policy', href: 'privacy.html' },
       { label: 'Terms of Service', href: 'terms.html' },
+      { label: 'Cookie settings', href: 'privacy.html#cookies' },
     ]},
   ];
 
@@ -102,12 +103,12 @@
                 <span class="mark">${LOGO_IMG}</span>
                 <span>Propellus</span>
               </a>
-              <p class="tagline">The AI infrastructure layer for global visa processing.</p>
+              <p class="tagline">Visa application preparation for travel agencies and OTAs.</p>
             </div>
             ${colsHTML}
           </div>
           <p class="footer-support">Support: <a href="mailto:support@propellus.co">support@propellus.co</a></p>
-          <div class="footer-bottom"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · © 2026 Propellus Pte. Ltd.<span class="fb-loc"> · Singapore</span></div>
+          <div class="footer-bottom"><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="privacy.html#cookies">Cookie settings</a> · © 2026 Propellus Pte. Ltd.<span class="fb-loc"> · Singapore</span></div>
         </div>
       </footer>
     `;
