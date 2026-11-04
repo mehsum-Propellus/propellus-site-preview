@@ -128,7 +128,9 @@
 .sol-note{margin-top:32px;color:#0B1723;font-weight:500}
 .fork-card .cta{color:#00767D}
 </style>
-<style>.prod-full{margin-top:16px;text-align:center;font-size:15px}.prod-full a{color:#00767D;font-weight:600}.prod-full a:hover{text-decoration:underline}</style>
+<style>.prod-full{margin-top:16px;text-align:center;font-size:15px}.prod-full a{color:#00767D;font-weight:600}.prod-full a:hover{text-decoration:underline}.ota-head{max-width:760px}.ota-head .body-lg{margin-top:16px}.ota-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin-top:40px;justify-items:center}.ota-pair .shot{width:100%;max-width:340px}.shot-tag{display:inline-block;align-self:flex-start;font-size:14px;font-weight:600;color:#0B1723;background:#F2FCFC;border:1px solid #CDEFF0;border-radius:999px;padding:6px 14px}.shot-tag.with{color:#00767D;border-color:#00767D;background:#FFFFFF}
+@media(max-width:700px){.ota-pair{grid-template-columns:minmax(0,1fr)}}
+</style>
 </head>
 <body class="hero-immersive">
 
@@ -143,7 +145,7 @@
       <div class="hero-im-inner fade-in">
         <span class="label">FOR TRAVEL AGENTS</span>
         <h1 class="h1">Prepare and manage your visa applications in <span class="accent">one place.</span></h1>
-        <p class="hero-im-sub">Stop juggling WhatsApp groups, Excel sheets, and endless follow-ups. Propellus prepares and checks the application, and the agent's team submits it. Orders, documents and status sit in one place.</p>
+        <p class="hero-im-sub">Stop juggling WhatsApp groups, Excel sheets, and endless follow-ups. Propellus prepares and checks. Your team submits. Orders, documents and status sit in one place.</p>
         <div class="hero-cta">
           <a class="btn btn-accent" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener">Book a demo</a>
         </div>
@@ -205,6 +207,21 @@
   </div>
 </section>
 
+<!-- QUESTIONS AND MISSING DOCUMENTS (moved from ota.html) -->
+<section class="section band-white" data-screen-label="04b Missing Documents">
+  <div class="container">
+    <div class="ota-head">
+      <span class="label">MISSING DOCUMENTS</span>
+      <h2 class="h2">Questions and missing documents, <span class="accent">handled in the flow.</span></h2>
+      <p class="body-lg">No more back-and-forth for one application. When a passport is expired, a photo is too small or a statement is missing, the traveller gets a clear request and a suggested fix in chat, and can reply or re-upload right there.</p>
+    </div>
+    <div class="ota-pair">
+      <figure class="shot"><span class="shot-tag">Today: over chat</span><picture><source srcset="assets/shots/shot-agency-chat.webp" type="image/webp"><img src="assets/shots/shot-agency-chat.jpg" width="426" height="800" alt="Chat thread collecting documents over several days" loading="lazy"></picture><figcaption>Requests and documents arrive in a chat thread over several days.</figcaption></figure>
+      <figure class="shot"><span class="shot-tag with">With Propellus: in the flow</span><picture><source srcset="assets/shots/shot-agency-gaps-v.webp" type="image/webp"><img src="assets/shots/shot-agency-gaps-v.jpg" width="411" height="385" alt="Cross-check screen with potential gaps flagged on the passport, photo and bank statement" loading="lazy"></picture><figcaption>A potential gap is flagged on the document itself, with a suggested fix.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================
      DOCUMENTS → DECISIONS (three-step strip)
 ============================================ -->
@@ -212,13 +229,13 @@
   <div class="container">
     <div class="section-head">
       <h2 class="h2">Stop chasing documents. <span class="accent">Keep the decisions.</span></h2>
-      <p class="body-lg" style="margin-top:16px;max-width:720px;">Every document lands in one flow. Propellus AI reads, cross-checks, spots gaps and helps you fix them, then gets the visa form ready. Propellus prepares and checks the application, and the agent's team submits it.</p>
+      <p class="body-lg" style="margin-top:16px;max-width:720px;">Every document lands in one flow. Propellus AI reads, cross-checks, spots gaps and helps you fix them, then gets the visa form ready. Propellus prepares and checks. Your team submits.</p>
       <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NCzTpHEEtc9OefEvR3i6__vm9Zs5VV-y-fjjq22vqnooq_DUZYmfWS2QKIi_3C-TGcryx02sL" target="_blank" rel="noopener" style="margin-top:24px;">Book a demo</a>
     </div>
     <div class="shot-row">
       <figure class="shot"><picture><source srcset="assets/shots/shot-agency-upload-v.webp" type="image/webp"><img src="assets/shots/shot-agency-upload-v.jpg" width="420" height="390" alt="Upload checklist with a status for each document" loading="lazy"></picture><figcaption>Every document lands in one flow, with a status for each one.</figcaption></figure>
       <figure class="shot"><picture><source srcset="assets/shots/shot-agency-gaps-v.webp" type="image/webp"><img src="assets/shots/shot-agency-gaps-v.jpg" width="411" height="385" alt="Cross-check screen with potential gaps flagged on the passport, photo and bank statement" loading="lazy"></picture><figcaption>Potential gaps are flagged on each document, so they can be fixed before review.</figcaption></figure>
-      <figure class="shot"><picture><source srcset="assets/shots/shot-agency-submit-v.webp" type="image/webp"><img src="assets/shots/shot-agency-submit-v.jpg" width="390" height="623" alt="Application marked ready to submit, with the submit button" loading="lazy"></picture><figcaption>The application is ready for the agent's team to review and submit.</figcaption></figure>
+      <figure class="shot"><picture><source srcset="assets/shots/shot-agency-submit-v.webp" type="image/webp"><img src="assets/shots/shot-agency-submit-v.jpg" width="390" height="623" alt="Application marked ready to submit, with the submit button" loading="lazy"></picture><figcaption>The application is ready for your team to review and submit.</figcaption></figure>
     </div>
   </div>
 </section>
@@ -261,7 +278,7 @@
   <div class="container">
     <div class="section-head">
       <span class="label">HOW IT WORKS</span>
-      <h2 class="h2">Four steps. Then done.</h2>
+      <h2 class="h2">Four steps.</h2>
     </div>
     <div class="steps steps-run" id="flowSteps">
       <div class="step" data-i="0">
@@ -270,11 +287,11 @@
       </div>
       <div class="step" data-i="1">
         <div class="step-num">02 / AI validates</div>
-        <div class="step-body">AI checks the data against destination visa requirements and catches errors before submission.</div>
+        <div class="step-body">AI checks the data against destination visa requirements and flags errors before your team submits.</div>
       </div>
       <div class="step" data-i="2">
         <div class="step-num">03 / Form auto-filled</div>
-        <div class="step-body">The application is populated instantly from extracted data. Your team reviews and confirms. No typing.</div>
+        <div class="step-body">The application is filled in from the extracted data. Your team reviews and confirms.</div>
       </div>
       <div class="step" data-i="3">
         <div class="step-num">04 / Your team reviews and submits</div>
@@ -290,13 +307,7 @@
 <section class="logos" data-screen-label="Partner Logos">
   <div class="container">
     <span class="label">WORKING WITH</span>
-    <div class="logo-row">
-      <span class="lg lg-gozayaan"><img src="assets/partner-logos/gozayaan.svg" alt="GoZayaan" width="130" height="42" loading="lazy"></span>
-      <picture class="lg lg-aeg"><source srcset="assets/partner-logos/aeg-sm.webp" type="image/webp"><img src="assets/partner-logos/aeg-sm.png" alt="AEG Travel" width="400" height="200" loading="lazy"></picture>
-      <picture class="lg lg-e360"><source srcset="assets/partner-logos/explorer360-sm.webp" type="image/webp"><img src="assets/partner-logos/explorer360-sm.png" alt="Explorer 360" width="320" height="320" loading="lazy"></picture>
-      <picture class="lg lg-tourease"><source srcset="assets/partner-logos/tourease-sm.webp" type="image/webp"><img src="assets/partner-logos/tourease-sm.png" alt="TourEase" width="400" height="264" loading="lazy"></picture>
-      <picture class="lg lg-gb"><source srcset="assets/partner-logos/gb-limousine-sm.webp" type="image/webp"><img src="assets/partner-logos/gb-limousine-sm.png" alt="GB Limousine" width="280" height="138" loading="lazy"></picture>
-    </div>
+    <div class="logo-strip"><img src="assets/partner-logos/v5/gozayaan.png" alt="GoZayaan" width="514" height="160" loading="lazy"><img src="assets/partner-logos/v5/aeg.png" alt="AEG Travel" width="320" height="160" loading="lazy"><img src="assets/partner-logos/v5/explorer360-wordmark.png" alt="Explorer 360" width="1386" height="196" loading="lazy"><img src="assets/partner-logos/v5/tourease.png" alt="TourEase" width="255" height="160" loading="lazy"><img src="assets/partner-logos/v5/gb-limousine.png" alt="GB Limousine" width="335" height="160" loading="lazy"></div>
   </div>
 </section>
 
