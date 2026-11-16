@@ -1,0 +1,14 @@
+.reviewed-demo-film{margin:24px 0 32px;border:1px solid var(--line,#cdeff0);border-radius:18px;overflow:hidden;background:#f2fcfc}.reviewed-demo-film video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#f2fcfc}.reviewed-demo-film figcaption{display:grid;gap:8px;padding:20px 24px;font-size:14px;line-height:1.65;color:#334b59}.reviewed-demo-film figcaption strong{font-size:16px;color:#0b1723}@media(max-width:600px){.reviewed-demo-film figcaption{padding:16px}.reviewed-demo-film{border-radius:12px}}
+
+.video-format-note{display:block;margin-top:10px;font-size:14px;line-height:1.5;font-weight:600}
+
+/* Chapters keep the complete walkthrough accessible without a long linear watch. */
+.video-chapters{padding:16px 18px;background:#f0fafb;border-top:1px solid #d2e5e7;color:#173b45}
+.video-chapters h3{font-size:16px;line-height:1.4;margin:0 0 10px;font-weight:650}
+.video-chapters ol{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.video-chapters button{display:flex;gap:8px;align-items:center;text-align:left;padding:10px 12px;min-height:44px;border:1px solid #b8d5d8;border-radius:8px;background:white;color:#173b45;font:inherit;font-size:14px;line-height:1.4;cursor:pointer}
+.video-chapters button:hover{background:#d8f7f8;border-color:#25858d}
+.video-chapters button:focus-visible{outline:3px solid #00727c;outline-offset:3px}
+.video-chapters time{font-variant-numeric:tabular-nums;color:#385f68}
+.chapter-status:empty{display:none}.chapter-status{font-size:14px;margin:10px 0 0}
+@media(max-width:600px){.video-chapters{padding:14px}.video-chapters ol{display:grid;grid-template-columns:1fr 1fr}.video-chapters button{width:100%;height:100%;flex-wrap:wrap;gap:4px 8px}}
