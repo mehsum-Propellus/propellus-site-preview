@@ -30,7 +30,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Package site
-        run: zip -r -q /tmp/site.zip . -x '.git/*' '.github/*'
+        run: zip -r -q /tmp/site.zip . -x '.git/*' '.github/*' 'AGENTS.md'
 
       - name: Upload and deploy
         run: |

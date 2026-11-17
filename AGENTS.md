@@ -6,7 +6,7 @@ Owner of deployment and the propellus.ai switchover: **Mehsum** (`mehsum@propell
 ## What this repo is
 
 A static HTML/CSS/JS marketing site for Propellus. There's no build step and no package manager.
-Every file in the repo root (except `.git/` and `.github/`) is served as-is.
+Every file in the repo (except `.git/`, `.github/` and this `AGENTS.md`) is served as-is.
 
 ## How deployment works today
 
