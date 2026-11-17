@@ -1,55 +1,130 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:05.000
-Choose a destination to start the guided application.
+00:00:00.000 --> 00:00:04.705
+Experience the entire visa application lifecycle through our AI-powered Traveler Portal
 
-00:00:05.000 --> 00:00:08.167
-Open the guided chat.
+00:00:13.098 --> 00:00:17.211
+The first step is simply choosing your destination. Today we'll select Malaysia
 
-00:00:08.167 --> 00:00:13.167
-Confirm the traveller’s current location.
+00:00:17.211 --> 00:00:18.239
+as an example.
 
-00:00:13.167 --> 00:00:18.167
-Answer the residency question.
+00:00:19.995 --> 00:00:22.913
+Your AI assistant greets you and confirms your location
 
-00:00:18.167 --> 00:00:23.167
-Provide a contact number for application updates. The value is masked.
+00:00:24.570 --> 00:00:29.525
+If the detected location isn't correct, simply select 'No, different country'
 
-00:00:23.167 --> 00:00:28.167
-Confirm how many people are travelling.
+00:00:31.205 --> 00:00:33.582
+and choose your current country of residence.
 
-00:00:28.167 --> 00:00:33.167
-Review the configured visa option. Requirements and prices are recorded examples.
+00:00:35.175 --> 00:00:38.992
+Simply enter your phone number and continue. We'll use it to keep
 
-00:00:33.167 --> 00:00:36.417
-Read the document requirements for the selected option.
+00:00:38.992 --> 00:00:41.855
+you informed at every stage of your visa application.
 
-00:00:36.417 --> 00:00:39.583
-Select the option and continue the guided application.
+00:00:43.554 --> 00:00:48.097
+Use the language selector to continue the application in your preferred language.
 
-00:00:39.583 --> 00:00:44.583
-Create or sign in to an account. Credential entry is omitted.
+00:00:49.684 --> 00:00:53.124
+Travellers can choose their preferred currency at any time.
 
-00:00:44.583 --> 00:00:49.583
-Upload a passport bio page. Personal details and account values are masked.
+00:00:54.792 --> 00:00:58.601
+Get assistance from our visa experts without leaving your application.
 
-00:00:49.583 --> 00:00:54.583
-Follow the passport-image guidance before uploading.
+00:01:00.392 --> 00:01:03.967
+Adjust the number of adults and children included in your application.
 
-00:00:54.583 --> 00:01:02.833
-Watch extraction and validation, then review the populated fields.
+00:01:05.617 --> 00:01:09.304
+Review all available visa options and choose the one that best fits
 
-00:01:02.833 --> 00:01:07.833
-Check and correct the extracted information before continuing.
+00:01:09.304 --> 00:01:10.226
+your travel needs.
 
-00:01:07.833 --> 00:01:12.833
-Follow the photograph guidance.
+00:01:11.849 --> 00:01:15.860
+Following this, click the Details button to view comprehensive visa requirements.
 
-00:01:12.833 --> 00:01:17.833
-Continue the supporting-document questions.
+00:01:22.649 --> 00:01:27.231
+Next, click Register to create your account and continue your application.
 
-00:01:17.833 --> 00:01:24.833
-The order is sent to the service team; payment is pending. This is not government submission.
+00:01:28.850 --> 00:01:31.408
+Already have an account? Click Log in to sign in
 
-00:01:24.833 --> 00:01:27.833
-Track the service workflow and resume saved drafts.
+00:01:33.227 --> 00:01:36.992
+Once you're logged in, you'll see the menu on the left, your
+
+00:01:36.992 --> 00:01:40.757
+application summary on the right, and guidance on how to upload your
+
+00:01:40.757 --> 00:01:41.071
+passport.
+
+00:01:44.198 --> 00:01:47.843
+Want to know exactly what you're paying for? Click View breakdown for
+
+00:01:47.843 --> 00:01:49.058
+a full cost summary.
+
+00:01:50.834 --> 00:01:54.269
+Drag and drop, scan, or grab it from Google Drive — upload
+
+00:01:54.269 --> 00:01:57.131
+your passport and let the magic happen behind the scenes.
+
+00:01:58.840 --> 00:02:03.645
+No typing needed. We automatically extract your details, validate them, and cross-check
+
+00:02:03.645 --> 00:02:08.450
+everything against your eligibility — so your application is prepared for you.
+
+00:02:10.239 --> 00:02:13.439
+Once your details look good, click Continue to proceed.
+
+00:02:14.960 --> 00:02:19.090
+Next, click Upload to add your passport size photo — we'll validate
+
+00:02:19.090 --> 00:02:21.499
+the format, background, and size for you.
+
+00:02:23.312 --> 00:02:26.956
+From here, just answer a few questions and upload your remaining documents
+
+00:02:26.956 --> 00:02:27.867
+the same way
+
+00:02:29.529 --> 00:02:33.594
+Next, upload the required documents based on your occupation. For example, if
+
+00:02:33.594 --> 00:02:37.660
+you're a Job Holder, you'll be asked to upload documents such as
+
+00:02:37.660 --> 00:02:38.676
+your visiting card.
+
+00:02:40.714 --> 00:02:45.098
+Once you've completed your application, you'll be prompted to make your payment.
+
+00:02:45.098 --> 00:02:49.481
+Click Pay by Card to securely continue to Stripe, where you can
+
+00:02:49.481 --> 00:02:53.865
+enter your card details and select Pay Now. Once your payment is
+
+00:02:53.865 --> 00:02:55.691
+successful, you'll receive a confirmation.
+
+00:02:58.008 --> 00:03:00.914
+you're good to go. Your application will be ready to submit.
+
+00:03:02.425 --> 00:03:06.462
+And that's it — your application is submitted! Click Go to Dashboard
+
+00:03:06.462 --> 00:03:08.144
+to track your status anytime.
+
+00:03:11.406 --> 00:03:15.958
+That's how simple visa applications can be. Ready to offer this experience
+
+00:03:15.958 --> 00:03:18.993
+to your travellers? Visit Propellus to learn more.
