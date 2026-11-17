@@ -1,0 +1,52 @@
+name: Deploy to AWS Amplify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: amplify-deploy
+  cancel-in-progress: false
+
+env:
+  AWS_REGION: ap-southeast-1
+  AMPLIFY_APP_ID: d3ps60uh8xoquu
+  AMPLIFY_BRANCH: main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::414417173648:role/propellus-site-preview-amplify-deploy
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Package site
+        run: zip -r -q /tmp/site.zip . -x '.git/*' '.github/*'
+
+      - name: Upload and deploy
+        run: |
+          set -euo pipefail
+          read -r JOB_ID URL < <(aws amplify create-deployment \
+            --app-id "$AMPLIFY_APP_ID" --branch-name "$AMPLIFY_BRANCH" \
+            --query '[jobId,zipUploadUrl]' --output text)
+          curl -sSf -X PUT -H "Content-Type: application/zip" --upload-file /tmp/site.zip "$URL"
+          aws amplify start-deployment --app-id "$AMPLIFY_APP_ID" --branch-name "$AMPLIFY_BRANCH" --job-id "$JOB_ID"
+          for i in $(seq 1 60); do
+            STATUS=$(aws amplify get-job --app-id "$AMPLIFY_APP_ID" --branch-name "$AMPLIFY_BRANCH" --job-id "$JOB_ID" --query job.summary.status --output text)
+            echo "Job $JOB_ID: $STATUS"
+            case "$STATUS" in
+              SUCCEED) echo "Live: https://$AMPLIFY_BRANCH.$AMPLIFY_APP_ID.amplifyapp.com"; exit 0;;
+              FAILED|CANCELLED) exit 1;;
+            esac
+            sleep 5
+          done
+          exit 1
