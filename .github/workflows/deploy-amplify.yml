@@ -1,7 +1,7 @@
 name: Deploy to AWS Amplify
 
-# Publishes the newest dated release folder (e.g. nov182026-updated/) as the site ROOT.
-# If no dated folder exists, publishes the repo root. See .github/scripts/pick-site-dir.sh.
+# Publishes as the site ROOT whichever was updated most recently: the newest dated release
+# folder (e.g. nov182026-updated/) or the repo root files. See .github/scripts/pick-site-dir.sh.
 #
 # Triggers:
 #  - push to main (normal path)
@@ -35,6 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history: pick-site-dir.sh compares last-change times
 
       - name: Check whether live site is already current
         id: check

@@ -6,18 +6,23 @@ Owner of deployment and the propellus.ai switchover: **Mehsum** (`mehsum@propell
 ## What this repo is
 
 A static HTML/CSS/JS marketing site for Propellus. There's no build step and no package manager.
-**The newest dated release folder is published as the live site root.**
+**The live site root is whichever was updated most recently: the newest dated release folder or the repo root.**
 
-- **How to release a new version:** add a complete copy of the site in a new folder named
-  `<mon><DD><YYYY>-updated/` (for example `dec012026-updated/`), with `index.html` at its top level, and push
-  to `main`. The deploy picks the folder with the latest date in its name and publishes its contents at `/`.
-  The live URL is `/`, never `/<folder>/`.
+The deploy compares the last git commit that touched the **newest dated folder** with the last git commit that
+touched the **root site files** (everything except dated folders, `.github/`, `AGENTS.md` and `.nojekyll`), and publishes
+the more recent one at `/`. If a single commit touches both, the folder wins. Logic: `.github/scripts/pick-site-dir.sh`.
+
+- **Release a new version as a folder:** add a complete copy of the site in a new folder named
+  `<mon><DD><YYYY>-updated/` (for example `dec012026-updated/`), with `index.html` at its top level, and push to `main`.
+  It is published at `/`, never at `/<folder>/`.
+- **Or update the root:** edit the root files (`index.html` and the rest) and push. If that's the most recent change,
+  the root is published.
 - **Folder name rules:** a three-letter lowercase month (`jan` to `dec`), a two-digit day, a four-digit year, then
-  `-updated`. Folders that don't match, or that have no `index.html`, are ignored. Logic:
-  `.github/scripts/pick-site-dir.sh`.
-- **Editing an existing release:** edit the files inside the newest dated folder. Edits to the repo root
-  have **no effect** while any dated folder exists. The root is only a fallback.
-- **Rolling back:** delete or rename the newest folder (or fix its files) and push. The next-newest folder goes live.
+  `-updated`. Folders that don't match, or that have no `index.html`, are ignored. Only the newest dated folder counts:
+  editing an older dated folder does nothing.
+- **Watch out:** after a root edit goes live, a later commit that touches the newest folder (even a small fix) switches
+  the live site back to that folder. Keep working in one place, or copy changes into both.
+- **Rolling back:** push a fix to whichever source is live, or delete or rename the newest folder.
 - Dated folders are never served under their own path. `.git/`, `.github/` and this `AGENTS.md` are never served.
 - Every deploy writes `/deploy-version.txt` (commit ID and source folder) so you can check what's live:
   `curl https://main.dp4asw0uk11mm.amplifyapp.com/deploy-version.txt`
@@ -45,7 +50,7 @@ Pushing to `main` deploys the site automatically. No human or agent needs to do 
 | Auth | GitHub OIDC provider `token.actions.githubusercontent.com` (no stored AWS keys or repo secrets) |
 
 On push to `main`, the workflow:
-1. Picks the newest dated release folder (or the repo root if there are none).
+1. Picks the most recently updated source: the newest dated folder or the repo root.
 2. Assumes the deploy role through OIDC and zips that folder.
 3. Calls `amplify create-deployment`, uploads the zip, then calls `start-deployment`.
 4. Polls until the job reaches `SUCCEED`.
