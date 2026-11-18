@@ -55,6 +55,13 @@ On push to `main`, the workflow:
 3. Calls `amplify create-deployment`, uploads the zip, then calls `start-deployment`.
 4. Polls until the job reaches `SUCCEED`.
 
+Production SEO is applied to the ZIP by `.github/scripts/finalize-production-zip.py` before upload:
+each page gets `index, follow`, robots.txt allows crawling and declares the sitemap, and the sitemap
+includes every packaged HTML page using its verified propellus.ai canonical URL. Source HTML and
+robots.txt remain noindex/disallowed for the separate GitHub Pages previews. Do not deploy the raw
+source ZIP to production without this finalization. Analytics is loaded from `preferences.js` after
+analytics consent on propellus.ai/www.propellus.ai; do not add a duplicate tag to each HTML page.
+
 Check results in the repo's **Actions** tab. If a run fails, the live site keeps its previous version.
 
 ### Gotcha: OIDC subject format

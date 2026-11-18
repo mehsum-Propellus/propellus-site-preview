@@ -73,12 +73,14 @@ jobs:
           cd "$DIR"
           printf '%s\n%s\n' "$GITHUB_SHA" "$DIR" > deploy-version.txt
           zip -r -q /tmp/site.zip . -x '.git/*' '.github/*' 'AGENTS.md' '*-updated/*'
+          python3 "$GITHUB_WORKSPACE/.github/scripts/finalize-production-zip.py" /tmp/site.zip
           unzip -l /tmp/site.zip | tail -1
 
       - name: Upload and deploy
         if: steps.check.outputs.skip != 'true'
         run: |
           set -euo pipefail
+          test "$(aws sts get-caller-identity --query Account --output text)" = "164793262137"
           read -r JOB_ID URL < <(aws amplify create-deployment \
             --app-id "$AMPLIFY_APP_ID" --branch-name "$AMPLIFY_BRANCH" \
             --query '[jobId,zipUploadUrl]' --output text)
