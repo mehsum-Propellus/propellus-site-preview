@@ -6,11 +6,26 @@ Owner of deployment and the propellus.ai switchover: **Mehsum** (`mehsum@propell
 ## What this repo is
 
 A static HTML/CSS/JS marketing site for Propellus. There's no build step and no package manager.
-Every file in the repo (except `.git/`, `.github/` and this `AGENTS.md`) is served as-is.
+**The live site is the repo root.** Every file in the repo is served as-is, except `.git/`, `.github/`,
+this `AGENTS.md`, and the dated review folders (`nov*-updated/`).
+
+- **Updating the site:** edit the files in the repo root and push to `main`.
+- **Dated folders** (for example `nov182026-updated/`) are review snapshots for GitHub review links. They are
+  **not** deployed to Amplify. When a snapshot is approved, mirror it onto the root (keep `.git/`, `.github/`,
+  `AGENTS.md`, `.nojekyll` and the dated folders). This is how `nov182026-updated/` was promoted:
+
+  ```bash
+  rsync -a --delete --exclude='.git/' --exclude='.github/' --exclude='AGENTS.md' --exclude='.nojekyll' \
+    --exclude='nov*-updated/' nov182026-updated/ ./
+  ```
 
 ## How deployment works today
 
 Pushing to `main` deploys the site automatically. No human or agent needs to do anything.
+
+**Don't put `[skip ci]` in commit messages.** It stops the Amplify deploy. If a commit has it, start a
+deploy by hand: **Actions** tab → "Deploy to AWS Amplify" → **Run workflow** (or
+`gh workflow run deploy-amplify.yml --ref main`).
 
 | Item | Value |
 |---|---|
