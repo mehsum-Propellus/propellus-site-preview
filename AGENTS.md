@@ -82,25 +82,25 @@ The setup was done by a collaborator with write (not admin) access. Amplify's na
 connection needs repo admin to install its webhook. The repo owner (Mehsum) **can** switch to a native
 connection; see "Optional: switch to a native Amplify Git connection" below.
 
-## Do not touch: the live propellus.ai app
+## propellus.ai is served by this repo (switchover done 2026-11-18)
 
-The same account has a **different** Amplify app that currently serves the production domain:
+`propellus.ai` and `www.propellus.ai` were moved to Amplify app `dp4asw0uk11mm` (this repo) on **2026-11-18 at 05:08 UTC**.
+Pushes to `main` now update https://propellus.ai directly.
 
 | Item | Value |
 |---|---|
-| App | `propellus-website`, app ID `d1stqdxblqjwws` (platform `WEB_COMPUTE`) |
-| Repo | `propellus-org/propellus-website` (native Git connection, auto-build on `main`) |
-| Domains | `propellus.ai` and `www.propellus.ai` → branch `main`, CloudFront `d1u8dlcr9k7wvq.cloudfront.net` |
-| Certificate | Amplify-managed |
+| Domain association | `propellus.ai` on app `dp4asw0uk11mm`: apex and `www` → branch `main`, status `AVAILABLE` |
+| CloudFront | `d1xy7x1cezitcw.cloudfront.net` (apex A alias + `www` CNAME in Route 53) |
+| Certificate | Amplify-managed, `*.propellus.ai` + `propellus.ai` |
+| Previous app | `propellus-website` (`d1stqdxblqjwws`, repo `propellus-org/propellus-website`): **kept as a fallback, with no domain attached** |
 
-Don't modify, redeploy, or delete this app, except for the domain step in the switchover runbook below.
+Don't delete `propellus-website` without explicit approval. Keep it for at least a week after the switchover in case a rollback is needed.
 
 The Route 53 hosted zone `propellus.ai.` (`Z08827602C5OK0ZE45J8N`) holds **many unrelated
 production records**, including a `*.propellus.ai` wildcard, MX/SPF/Google verification TXT records,
 `admin`, `agency`, `supplier`, `api`, `partner`, `travel`, `dev`/`qa`/`uat` environments, and NS delegations
-for `prod.propellus.ai` and `v3.propellus.ai`. **The switchover touches only the apex `propellus.ai` A
-alias, the `www.propellus.ai` CNAME, and Amplify's certificate-validation CNAMEs.** Don't edit or delete
-anything else.
+for `prod.propellus.ai` and `v3.propellus.ai`. The switchover changed **only** the apex A alias and the `www` CNAME
+(confirmed by a full zone diff: 160 records before and after). Don't edit or delete anything else.
 
 ## One-time AWS CLI setup (Mehsum's machine)
 
@@ -133,7 +133,9 @@ When the session expires, run `aws sso login --profile propellus-prod`.
 
 Always confirm `aws sts get-caller-identity` shows account `164793262137` before you make changes.
 
-## Switchover runbook: point propellus.ai at this site
+## Switchover runbook (completed 2026-11-18; kept for reference and rollback)
+
+The cutover took about 4.5 minutes from detach to `AVAILABLE`. The steps below are what was run.
 
 Do this **only when Mehsum/Frank give the go-ahead**. Agree on a time window first: expect
 a few minutes to roughly 30 minutes of the domain being unavailable or showing certificate errors
@@ -211,7 +213,8 @@ Spot-check that unrelated subdomains still resolve, for example `dig +short admi
 
 ### Rollback
 
-If anything goes wrong, reverse the steps: move the domain back to the old app.
+To roll back to the old site, reverse the steps: move the domain back to the old app.
+Expect another 5-minute gap. Frank has backups of the pre-switchover state in `~/propellus-switchover-backup/` on his machine.
 
 ```bash
 aws amplify delete-domain-association --app-id $NEW --domain-name propellus.ai
