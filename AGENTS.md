@@ -6,26 +6,32 @@ Owner of deployment and the propellus.ai switchover: **Mehsum** (`mehsum@propell
 ## What this repo is
 
 A static HTML/CSS/JS marketing site for Propellus. There's no build step and no package manager.
-**The live site is the repo root.** Every file in the repo is served as-is, except `.git/`, `.github/`,
-this `AGENTS.md`, and the dated review folders (`nov*-updated/`).
+**The newest dated release folder is published as the live site root.**
 
-- **Updating the site:** edit the files in the repo root and push to `main`.
-- **Dated folders** (for example `nov182026-updated/`) are review snapshots for GitHub review links. They are
-  **not** deployed to Amplify. When a snapshot is approved, mirror it onto the root (keep `.git/`, `.github/`,
-  `AGENTS.md`, `.nojekyll` and the dated folders). This is how `nov182026-updated/` was promoted:
-
-  ```bash
-  rsync -a --delete --exclude='.git/' --exclude='.github/' --exclude='AGENTS.md' --exclude='.nojekyll' \
-    --exclude='nov*-updated/' nov182026-updated/ ./
-  ```
+- **How to release a new version:** add a complete copy of the site in a new folder named
+  `<mon><DD><YYYY>-updated/` (for example `dec012026-updated/`), with `index.html` at its top level, and push
+  to `main`. The deploy picks the folder with the latest date in its name and publishes its contents at `/`.
+  The live URL is `/`, never `/<folder>/`.
+- **Folder name rules:** a three-letter lowercase month (`jan` to `dec`), a two-digit day, a four-digit year, then
+  `-updated`. Folders that don't match, or that have no `index.html`, are ignored. Logic:
+  `.github/scripts/pick-site-dir.sh`.
+- **Editing an existing release:** edit the files inside the newest dated folder. Edits to the repo root
+  have **no effect** while any dated folder exists. The root is only a fallback.
+- **Rolling back:** delete or rename the newest folder (or fix its files) and push. The next-newest folder goes live.
+- Dated folders are never served under their own path. `.git/`, `.github/` and this `AGENTS.md` are never served.
+- Every deploy writes `/deploy-version.txt` (commit ID and source folder) so you can check what's live:
+  `curl https://main.dp4asw0uk11mm.amplifyapp.com/deploy-version.txt`
 
 ## How deployment works today
 
 Pushing to `main` deploys the site automatically. No human or agent needs to do anything.
 
-**Don't put `[skip ci]` in commit messages.** It stops the Amplify deploy. If a commit has it, start a
-deploy by hand: **Actions** tab → "Deploy to AWS Amplify" → **Run workflow** (or
-`gh workflow run deploy-amplify.yml --ref main`).
+- **On push to `main`:** deploys right away.
+- **Every 10 minutes:** a scheduled check redeploys if the live `deploy-version.txt` doesn't match `main`.
+  This catches commits pushed with `[skip ci]`, which suppresses the push trigger. Such commits go live within about 10
+  minutes (GitHub's schedule can lag). Avoid `[skip ci]` if you want deploys right away.
+- **Manual:** **Actions** tab → "Deploy to AWS Amplify" → **Run workflow** (or
+  `gh workflow run deploy-amplify.yml --ref main`).
 
 | Item | Value |
 |---|---|
@@ -39,8 +45,8 @@ deploy by hand: **Actions** tab → "Deploy to AWS Amplify" → **Run workflow**
 | Auth | GitHub OIDC provider `token.actions.githubusercontent.com` (no stored AWS keys or repo secrets) |
 
 On push to `main`, the workflow:
-1. Assumes the deploy role through OIDC.
-2. Zips the repo.
+1. Picks the newest dated release folder (or the repo root if there are none).
+2. Assumes the deploy role through OIDC and zips that folder.
 3. Calls `amplify create-deployment`, uploads the zip, then calls `start-deployment`.
 4. Polls until the job reaches `SUCCEED`.
 
@@ -224,7 +230,9 @@ the Actions workflow. **Do this before or well after the switchover, not during 
 
 1. In the Amplify console (account `164793262137`, `ap-southeast-1`), choose **Create new app**, then
    **GitHub**, authorize as the repo owner, and pick `mehsum-Propellus/propellus-site-preview` on branch `main`.
-   It's a static site, so set the build output directory to the repo root and leave the build command empty.
+   It's a static site, but the build must still publish the **newest dated folder** as the root. In `amplify.yml`, set a
+   build command that runs `DIR=$(bash .github/scripts/pick-site-dir.sh)` and copies `$DIR` to a `dist/` folder, then use
+   `dist` as `baseDirectory`.
 2. Confirm the new app's `main.<newAppId>.amplifyapp.com` URL serves the site.
 3. Point the domain (or the switchover runbook) at the new app ID instead of `dp4asw0uk11mm`.
 4. Remove the now-redundant pieces:

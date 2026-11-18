@@ -1,8 +1,19 @@
 name: Deploy to AWS Amplify
 
+# Publishes the newest dated release folder (e.g. nov182026-updated/) as the site ROOT.
+# If no dated folder exists, publishes the repo root. See .github/scripts/pick-site-dir.sh.
+#
+# Triggers:
+#  - push to main (normal path)
+#  - every 10 minutes: redeploys only if the live site is behind main
+#    (catches commits pushed with [skip ci], which suppresses the push trigger)
+#  - manual: Actions tab -> Run workflow
+
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '*/10 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -17,6 +28,7 @@ env:
   AWS_REGION: ap-southeast-1
   AMPLIFY_APP_ID: dp4asw0uk11mm
   AMPLIFY_BRANCH: main
+  SITE_URL: https://main.dp4asw0uk11mm.amplifyapp.com
 
 jobs:
   deploy:
@@ -24,15 +36,45 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check whether live site is already current
+        id: check
+        run: |
+          LIVE=$(curl -fsS "$SITE_URL/deploy-version.txt?t=$(date +%s)" 2>/dev/null | head -1 || true)
+          echo "live=$LIVE main=$GITHUB_SHA"
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" && "$LIVE" == "$GITHUB_SHA" ]]; then
+            echo "Live site already at $GITHUB_SHA, nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Choose site folder
+        if: steps.check.outputs.skip != 'true'
+        id: pick
+        run: |
+          DIR=$(bash .github/scripts/pick-site-dir.sh)
+          echo "Publishing '$DIR' as the site root"
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+
       - uses: aws-actions/configure-aws-credentials@v4
+        if: steps.check.outputs.skip != 'true'
         with:
           role-to-assume: arn:aws:iam::164793262137:role/propellus-site-preview-amplify-deploy
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Package site
-        run: zip -r -q /tmp/site.zip . -x '.git/*' '.github/*' 'AGENTS.md' 'nov*-updated/*'
+        if: steps.check.outputs.skip != 'true'
+        env:
+          DIR: ${{ steps.pick.outputs.dir }}
+        run: |
+          set -euo pipefail
+          cd "$DIR"
+          printf '%s\n%s\n' "$GITHUB_SHA" "$DIR" > deploy-version.txt
+          zip -r -q /tmp/site.zip . -x '.git/*' '.github/*' 'AGENTS.md' '*-updated/*'
+          unzip -l /tmp/site.zip | tail -1
 
       - name: Upload and deploy
+        if: steps.check.outputs.skip != 'true'
         run: |
           set -euo pipefail
           read -r JOB_ID URL < <(aws amplify create-deployment \
@@ -44,7 +86,7 @@ jobs:
             STATUS=$(aws amplify get-job --app-id "$AMPLIFY_APP_ID" --branch-name "$AMPLIFY_BRANCH" --job-id "$JOB_ID" --query job.summary.status --output text)
             echo "Job $JOB_ID: $STATUS"
             case "$STATUS" in
-              SUCCEED) echo "Live: https://$AMPLIFY_BRANCH.$AMPLIFY_APP_ID.amplifyapp.com"; exit 0;;
+              SUCCEED) echo "Live: $SITE_URL"; exit 0;;
               FAILED|CANCELLED) exit 1;;
             esac
             sleep 5
