@@ -62,3 +62,8 @@
 
 .partner-logos .pk-trek-logo{flex:0 0 180px}.partner-logos .pk-trek-logo img{position:absolute;width:224.22%;max-width:none;height:auto;left:-61.88%;top:50%;transform:translateY(-50.2%);object-fit:contain}
 .partner-logos .pk-trek-logo{width:150px;flex-basis:150px;height:48px}@media(max-width:600px){.partner-logos .pk-trek-logo{width:130px;flex-basis:130px;height:42px}}
+
+.booking-dialog { width: min(900px, 96vw); max-width: 96vw; padding: 0; border: 0; border-radius: 12px; }
+.booking-dialog::backdrop { background: rgb(12 26 40 / 55%); }
+.booking-tools { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 1rem; }
+.booking-dialog iframe { display: block; width: 100%; height: min(76dvh, 780px); border: 0; }
