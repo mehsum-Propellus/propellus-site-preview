@@ -161,5 +161,50 @@
       if (typeof value === 'string' && value.length <= 120 && /^[a-zA-Z0-9_. -]+$/.test(value)) url.searchParams.set(key, value);
     });
     link.href = url.href;
+    if (booking && url.protocol === 'https:' && url.pathname === '/lionel-john') {
+      link.addEventListener('click', event => {
+        if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey ||
+            event.altKey || event.shiftKey || !window.HTMLDialogElement) return;
+        event.preventDefault();
+        openBooking(link);
+      });
+    }
   });
+
+  function openBooking(link) {
+    const url = new URL(link.href);
+    const dialog = document.createElement('dialog');
+    dialog.className = 'booking-dialog';
+    dialog.setAttribute('aria-label', 'Book a demo with Lionel');
+    dialog.innerHTML = '<div class="booking-tools"><a target="_blank" rel="noopener">Open calendar in a new tab</a><button type="button" class="text-button">Close</button></div>';
+    dialog.querySelector('a').href = link.href;
+    const frame = document.createElement('iframe');
+    frame.title = 'Choose a demo time with Lionel';
+    url.searchParams.set('embed', 'true');
+    frame.src = url.href;
+    let reported = false;
+    function onBooking(event) {
+      if (reported || event.origin !== url.origin || event.source !== frame.contentWindow ||
+          event.data?.meetingBookSucceeded !== true) return;
+      try {
+        if (JSON.parse(localStorage.getItem(consentKey) || '{}').analytics !== true) return;
+      } catch (_) { return; }
+      reported = true;
+      window.gtag?.('event', 'demo_booking_confirmed', {
+        booking_page: location.pathname,
+        cta_location: link.closest('nav') ? 'navigation' : link.closest('footer') ? 'footer' :
+          link.closest('.hero') ? 'hero' : 'body'
+      });
+    }
+    window.addEventListener('message', onBooking);
+    dialog.addEventListener('close', () => {
+      window.removeEventListener('message', onBooking);
+      dialog.remove();
+      link.focus();
+    }, { once: true });
+    dialog.querySelector('button').addEventListener('click', () => dialog.close());
+    dialog.append(frame);
+    document.body.append(dialog);
+    dialog.showModal();
+  }
 })();
